@@ -1,5 +1,7 @@
-binbits
+binbits >> BECAUSE LINUX
 =======
+
+This is the same as master, except things because for Linux.  And I call it 'Lynn-Ucks'. And I don't care. Suck it, Torvalds.  I also like bash, don't understand regexp, and fucking hate make.  I'm ok with this.
 
 Things for ~/bin, which includes bash startup stuff, git configuration, sublime text things, some hold music, and a picture of a naked lady.
 
