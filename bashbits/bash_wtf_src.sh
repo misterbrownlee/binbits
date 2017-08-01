@@ -60,9 +60,15 @@ EXECUTABLE_SETGID="$LS_DEFAULT $LS_DEFAULT"
 DW_WITH_T="$LS_DEFAULT $LS_DEFAULT"
 DW_WITHOUT_T="$LS_DEFAULT $LS_DEFAULT"
 
-LS_COLORS="$DIRECTORY $SYMLINK $SOCKET $PIPE $EXECUTABLE $BLOCK_SPECIAL $CHARACTER_SPECIAL"
-LS_COLORS="$LS_COLORS $EXECUTABLE_SETUID $EXECUTABLE_SETGID $DW_WITH_T $DW_WITHOUT_T"
-export LSCOLORS="${LS_COLORS//[[:space:]]/}"
+# this Darwin stuff no worky
+# LS_COLORS="$DIRECTORY $SYMLINK $SOCKET $PIPE $EXECUTABLE $BLOCK_SPECIAL $CHARACTER_SPECIAL"
+# LS_COLORS="$LS_COLORS $EXCUTABLE_SETUID $EXECUTABLE_SETGID $DW_WITH_T $DW_WITHOUT_T"
+# export LSCOLORS="${LS_COLORS//[[:space:]]/}"
+
+# here is lynn-yucks lscolors wtf string of goodness
+# which I'm suprised even makes sense to a machine, let alone a people
+# why do all programmers hate humans soo much? 
+export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:ex=00;35"
 export CLICOLOR=1
 
 # --------------------------------
@@ -119,9 +125,9 @@ function showColors() {
 # Add git related details to prompt if available
 # some set up around status coloring
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#  . $(brew --prefix)/etc/bash_completion
+#fi
 
 ## add completetion for aliases
 __git_complete g __git_main
@@ -139,8 +145,8 @@ GIT_PS1_SHOWDIRTYSTATE='srsly'
 # PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_LIGHT_CYAN@$COLOR_LIGHT_RED\h$COLOR_LIGHT_YELLOW:\W $COLOR_LIGHT_GRAY' ' \n➥ $COLOR_NC'"
 PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_GRAY $COLOR_LIGHT_RED\h$COLOR_GRAY $COLOR_LIGHT_YELLOW\W$COLOR_NC' '$COLOR_LIGHT_GRAY\n=> '"
 
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+#export NVM_DIR="$HOME/.nvm"
+#. "$(brew --prefix nvm)/nvm.sh"
 
 
 

@@ -62,4 +62,4 @@
 	autocrlf = input
 	excludesfile = /Users/brownlee/.gitignore_global
 [push]
-	default = simple
+	default = tracking 
