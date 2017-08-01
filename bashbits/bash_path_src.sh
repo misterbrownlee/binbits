@@ -27,11 +27,6 @@ MORE_SOUNDS_PATH=/System/Library/PrivateFrameworks/ScreenReader.framework/Versio
 # hates RVM
 # RVM=$HOME/.rvm/bin
 
-# some wtf things
-# WORK_EXTRAS="~/projects/tools/bin"
-
 # export thems
-# export PATH=$PATH:~/bin:$FLEX_HOME/bin:$ANDROID_PATHS:$GIT_PATH/bin:$WORK_EXTRAS:$RUBY_PATH:$NPM_GLOBAL:$RVM
-
-export PATH=$PATH:~/bin:~/bin/bits:$GIT_PATH/bin
+export PATH=$PATH:~/bin:$GIT_PATH/bin
 
