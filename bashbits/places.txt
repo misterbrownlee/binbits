@@ -1,0 +1,1 @@
+["code"]="~/Documents/code"  ["tools"]="~/Documents/code/tools" ["thang"]="~/Documents/code/mine/thang-land"
