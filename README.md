@@ -27,7 +27,8 @@ then
 fi
 ```
 
-It's a bitch to symlink the Submlime text stuff, but here ya go:
+It's a bitch to symlink the Submlime text stuff, but here ya go... at least for Sierra (10.12.6) and Sublime Text 3 (3126):
+
 ```bash
 cd /Users/brownlee/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 rm Default\ \(OSX\).sublime-keymap && ln -s ~/bin/sublimebits/Default\ \(OSX\).sublime-keymap
