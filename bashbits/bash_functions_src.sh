@@ -3,6 +3,7 @@ echo "  loading functions..."
 
 # ------------------------------------------------
 # make a directory and change to it
+# I wish I used this more but I'm too stupid to remember
 #
 function mkcd() {
     mkdir $1; cd $1
@@ -30,9 +31,16 @@ function fragFolder {
   done;
 }
 
+
+# ------------------------------------------------
+# this is a nice idea for making a list of cd targets
+# and a shortcut for using them
+# and it never caught on
+# because muscle memory is way easier to configure I guess
+#
 function cd2() {
 
-  RAW_PLACES=$(< ~/.configs/places.txt)
+  RAW_PLACES=$(< ~/bin/randombits/places.txt)
   declare -a places=(RAW_PLACES)
   WHAT="$1"
   WHERE="${!places[$1]}"
@@ -43,6 +51,7 @@ function cd2() {
 
 # ------------------------------------------------
 # start playing hold music
+# because you hate yourself
 #
 function plzhold() {
   sh -c "afplay ~/bin/randombits/hold.mp3 &"
@@ -59,6 +68,7 @@ function plzstop() {
 
 # ------------------------------------------------
 # create a file and open it
+# I never use this btw
 #
 function rmd() {
   pandoc $1 | lynx -stdin
@@ -66,6 +76,7 @@ function rmd() {
 
 # ------------------------------------------------
 # create a file and open it
+# I pretty much also never use this lol
 #
 function newfile() {
   touch $1; edit $1
@@ -94,20 +105,22 @@ function nwh() {
 
 # ------------------------------------------------
 # make karma not try to find phantom.js
+# hopefully this crap is never part
+# of my life again, plx
 #
-function togglePhantom() {
-  if [ -z "$JENKINS_URL" ]
-  then
-    echo "setting JENKINS_URL=1"
-    export JENKINS_URL=1
-  else
-    echo "unset JENKINS_URL"
-    unset JENKINS_URL
-  fi
-}
+# function togglePhantom() {
+#   if [ -z "$JENKINS_URL" ]
+#   then
+#     echo "setting JENKINS_URL=1"
+#     export JENKINS_URL=1
+#   else
+#     echo "unset JENKINS_URL"
+#     unset JENKINS_URL
+#   fi
+# }
 
 # ------------------------------------------------
-# make the cat tell me if I have an IP yet
+# this makes the cow and a cat tell me if I have an IP yet
 #
 function ipmeow() {
   STOP=${1:-15}
@@ -121,7 +134,8 @@ function ipmeow() {
 }
 
 # ------------------------------------------------
-# make the cow tell me if I have an IP yet
+# it makes the cow tell me if I have an IP yet
+# or the cow gets the hose
 #
 function ipcow() {
   STOP=${1:-15}
@@ -153,7 +167,8 @@ function minty() {
 
 
 # ------------------------------------------------
-# clone a repo from github; args are [orgname] [repo]
+# lazy peeps one word clone a repo from github;
+# args are [orgname] [repo]
 #
 function clone {
   echo " trying github clone of $1:$2"
@@ -162,7 +177,7 @@ function clone {
 
 
 # ------------------------------------------------
-# clone from misterbrownlee
+# even moar lazy clone from misterbrownlee
 #
 function meclone {
   echo " trying git clone of misterbrownlee:$1"
@@ -171,7 +186,8 @@ function meclone {
 
 
 # ------------------------------------------------
-# clone a repo from Adobe github; args are [orgname] [repo]
+# clone a repo from Adobe github; YOU CANNOT HAZ
+# args are [orgname] [repo]
 #
 function aclone {
   echo " trying git clone $ADOBE_GITHUB:$1/$2.git"
@@ -181,11 +197,13 @@ function aclone {
 
 # ------------------------------------------------
 # clone a coralui component repo, because typing
+# which is a project that collapsed under its own weight
+# because it was too awesome for its own good
 #
-function cclone() {
-  echo " trying git clone $ADOBE_GITHUB:Coral/coralui-component-$1"
-  git clone $ADOBE_GITHUB:Coral/coralui-component-$1 $1
-}
+# function cclone() {
+#   echo " trying git clone $ADOBE_GITHUB:Coral/coralui-component-$1"
+#   git clone $ADOBE_GITHUB:Coral/coralui-component-$1 $1
+# }
 
 
 # ------------------------------------------------
@@ -202,30 +220,30 @@ function tagfloat() {
 
 
 # ------------------------------------------------
-# tag a git repo with a #pre (floating) tag
+# tag a git repo with a #pre-release (floating) tag
 #
 function tagpre() {
   VERSION=$1
   git tag -d pre
-  git push origin :refs/tags/pre || { return; }
-  git tag -a pre $VERSION -m "@releng - pre tag based on $VERSION" || { return; }
-  git push origin pre || { return; }
+  git push origin :refs/tags/pre-release || { return; }
+  git tag -a pre-release $VERSION -m "@releng - pre-release tag based on $VERSION" || { return; }
+  git push origin pre-release || { return; }
 }
 
 
 # ------------------------------------------------
-# prerelease and tag a git repo
+# pre-release and tag a git repo
 #
 function releasepre() {
   VERSION=$1
   # todo: warn if modules linked
   # todo: npm install latest
-  git tag -d pre
+  git tag -d pre-release
   git checkout master || { return; }
   git pull origin master || { return; }
-  git checkout prerelease || { return; }
-  git pull origin prerelease || { return; }
-  git merge master -m '@releng - merge master into prerelease' || { return; }
+  git checkout pre-release || { return; }
+  git pull origin pre-release || { return; }
+  git merge master -m '@releng - merge master into pre-release' || { return; }
   npm i || { return; }
   grunt release || { return; } # todo: pass version here
   tagpre $VERSION || { return; }
@@ -235,6 +253,7 @@ function releasepre() {
 
 # ------------------------------------------------
 # delete a tag, on earth as it is in heaven, ahhhhh mens yeah
+# args are just the tag name, of course, you dolt
 #
 function rmtag() {
   git tag -d $1
@@ -243,7 +262,9 @@ function rmtag() {
 
 
 # ------------------------------------------------
-# shortcuts to pop into and list folders in one move
+# shortcuts to pop into a dev directory and list its folders in one move
+# I never use the fancy parts of this, but it's a cool idea
+# just the shortcut to the main dev folder is nice tho
 #
 function cdad() {
 
@@ -286,7 +307,11 @@ function cdl() {
   cd "$@" && ll && printf "\nArrived at: ${COLOR_LIGHT_BLUE}$PWD\n";
 }
 
-
+# ------------------------------------------------
+# this looks for nvm config and uses it if found
+# you could make this run on every cd
+# but you'd be pretty fucking stupid if you did
+#
 function checkNvm() {
   if [[ -f .nvmrc && -r .nvmrc ]]; then
     nvm use
@@ -296,6 +321,16 @@ function checkNvm() {
   fi
 }
 
+# ------------------------------------------------
+# this juggles your .npmrc files so you can push to different targets
+# like '.npmrc-prod' or '.npmrc-sandbox' or '.npmrc-clusterfuck'
+#
+# do you hate the node.js ecosystem?
+# kinda? even just a little?
+# well, you should.
+# and I do.
+# it's a fucking train wreck.
+#
 function npmrcSwitch() {
   echo "Switching to the $1 .npmrc configuration"
   mv ~/.npmrc ~/.npmrc-last
