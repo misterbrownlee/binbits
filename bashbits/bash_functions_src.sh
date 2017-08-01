@@ -45,7 +45,7 @@ function cd2() {
 # start playing hold music
 #
 function plzhold() {
-  sh -c "afplay ~/bin/hold.mp3 &"
+  sh -c "afplay ~/bin/randombits/hold.mp3 &"
 }
 
 
