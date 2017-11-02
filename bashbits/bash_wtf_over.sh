@@ -1,8 +1,12 @@
+
+
+# --------------------------------
 # the things that aren't teh others
-echo '  loading wtf'
+# echo '  loading wtf...'
 
 # --------------------------------
 # ulimit which node likes to break a lot
+echo '   --> setting ulimit -S -n 2048'
 ulimit -S -n 2048
 
 # --------------------------------
@@ -118,13 +122,15 @@ function showColors() {
 # --------------------------------
 # Add git related details to prompt if available
 # some set up around status coloring
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  echo "   --> loading $(brew --prefix)/etc/bash_completion"
   . $(brew --prefix)/etc/bash_completion
 fi
 
-## add completetion for aliases
+## add completion for aliases
+echo "   --> setting completion for 'g'"
 __git_complete g __git_main
+echo "   --> setting completion for 'gco'"
 __git_complete gco _git_checkout
 
 # some prompt config
@@ -139,8 +145,25 @@ GIT_PS1_SHOWDIRTYSTATE='srsly'
 # PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_LIGHT_CYAN@$COLOR_LIGHT_RED\h$COLOR_LIGHT_YELLOW:\W $COLOR_LIGHT_GRAY' ' \n➥ $COLOR_NC'"
 PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_GRAY $COLOR_LIGHT_RED\h$COLOR_GRAY $COLOR_LIGHT_YELLOW\W$COLOR_NC' '$COLOR_LIGHT_GRAY\n=> '"
 
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+NODE_CURRENT=`node --version`
+NPM_CURRENT=`npm --version`
+echo "   --> using node $NODE_CURRENT / npm @$NPM_CURRENT"
+
+# once fucking node 8 actually it's LTS
+# this will be cool
+
+# LATEST_LTS=`n --lts`
+
+# if [ $LATEST_LTS != $NODE_CURRENT ]; then
+#   echo "A newer LTS version ($LATEST_LTS) is available... you should update!"
+# fi
+
+# meanwhile
+! node --version | grep -q 'v8' && echo -e '\n\n     USE NODE 8 PLX !!!'
+# if [ $LATEST_LTS != $NODE_CURRENT ]; then
+#   echo "A newer LTS version ($LATEST_LTS) is available... you should update!"
+# fi
+
 
 
 

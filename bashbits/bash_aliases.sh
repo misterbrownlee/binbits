@@ -1,11 +1,13 @@
-DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "  loading aliases..."
+
+# ---------------------------------
+#      Aliases go in here
+#
 
 # -------------------------
 # general stuff
-# -------------------------
 #
 alias epoch='date "+%s"'
+alias devbotwut='echo "$DEVBOT_PASSWD"'
 alias ff='findfile'
 alias findfile='find . -name'
 alias fixbash='edit $DOTFILES_PATH'
@@ -14,25 +16,18 @@ alias ip='ifconfig | grep broadcast\ '
 alias iplan='ifconfig en3 | grep inet\ '
 alias ipwifi='ifconfig en0 | grep inet\ '
 alias ll='ls -lah'
-alias logcat='adb logcat'
-alias mnt='adb shell'
 alias now='date +"%m-%d-%Y %T"'
-alias nr='npm run'
-alias nrs='npm run -s'
-alias nrb='npm run build'
-alias nrd='npm run dev'
 alias passgen='openssl rand -base64 32'
-alias pinggitcorp='ssh -T $ADOBE_GITHUB'
+alias pingit='ssh -T git@github.com'
+alias pingitcorp='ssh -T $ADOBE_GITHUB'
 alias psrv='wsvr'
 alias reload-bash='rlbash'
-alias rlbash='. ~/.bashrc'
+alias rlbash='. ~/.bash_profile'
 alias rlb='rlbash'
-alias safp='/Users/brownlee/projects/tools/fpdebugger/standaloneplayer.app/Contents/MacOS/fp'
 alias sauce='sc -u brownlee -k $SAUCE_ACCESS_KEY'
 alias shrug='echo -e "" && echo -e "  ¯\_(ツ)_/¯ "'
 alias storeBgone='find . -name '*.DS_Store' -type f -delete'
-alias test-time='date +%s'
-alias test-gitcorp='ssh -T $ADOBE_GITHUB'
+alias timestamp='date +%s'
 alias wsrv='wsvr'
 alias wsvr='python -m SimpleHTTPServer'
 
@@ -110,7 +105,6 @@ alias this='here --background'
 # -------------------------
 #
 alias chrome='open -a /Applications/Google\ Chrome.app'
-alias opendb='open -a  /Applications/Utilities/SQLite\ Database\ Browser\ 2.0\ b1.app/'
 alias vox='open -a Vox'
 
 # -------------------------
@@ -130,9 +124,12 @@ alias is='npm i --save'
 alias isd='npm i --save-dev'
 alias minty_lite='nn; echo "fetching from git and merging master"; git up; ni; nr build'
 alias ni="echo 'installing via npm...'; shrug; plzhold; echo ""; npm install; say "BOOM"; plzstop; osascript -e 'display notification \"BOOM! installed!\"'";
-alias ninstalld='npm install --save-dev'
-alias nisd='npm install --save-dev'
+alias nln='npm link'
 alias nn='echo "removing node_modules..." && rm -rf node_modules'
+alias nr='npm run'
+alias nrb='npm run build'
+alias nrd='npm run dev'
+alias nrs='npm run -s'
 alias nuke-node-modules='fragFolder node_modules'
 
 
@@ -177,3 +174,11 @@ alias bitch='sudo' # kristofer joseph <3
 alias make-me-a-sandwich='echo "make it yourself, $USER..."'
 alias beerme='echo "WOOOOOOOOOOO! 🍺 🍺 🍺 🍺 🍺 🍺 !!!!!!!!!"'
 
+# -------------------------
+# memory lane
+# -------------------------
+#
+# alias safp='/Users/brownlee/projects/tools/fpdebugger/standaloneplayer.app/Contents/MacOS/fp'
+# alias opendb='open -a  /Applications/Utilities/SQLite\ Database\ Browser\ 2.0\ b1.app/'
+# alias logcat='adb logcat'
+# alias mnt='adb shell'

@@ -53,7 +53,7 @@
   t = tag
   undo =checkout --
   unstage = !git reset HEAD
-  up = !git fetch && git co master && git merge origin/master && git remote prune origin
+  up = !git fetch && git co master && git rebase origin/master && git remote prune origin
   upbase = !git remote update -p && git rebase origin/master
   upff = !git remote update -p && git merge --ff-only origin/master
   wayback = !git undo .
@@ -63,3 +63,5 @@
 	excludesfile = /Users/brownlee/.gitignore_global
 [push]
 	default = simple
+[merge "ours"]
+	driver = true

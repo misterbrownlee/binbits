@@ -1,5 +1,8 @@
-DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "  loading functions..."
+
+# ---------------------------------
+#      Functions go in here
+#
+
 
 # ------------------------------------------------
 # make a directory and change to it
@@ -331,11 +334,22 @@ function checkNvm() {
 # and I do.
 # it's a fucking train wreck.
 #
-function npmrcSwitch() {
-  echo "Switching to the $1 .npmrc configuration"
-  mv ~/.npmrc ~/.npmrc-last
-  cp ~/.npmrc-last ~/.npmrc-undo
-  cp ~/.npmrc-$1 .npmrc
+function switchNpmrc() {
+  echo -e "\nSwitching to the $1 .npmrc configuration"
+  # mv ~/.npmrc ~/.npmrc-last
+  # cp ~/.npmrc-last ~/.npmrc-undo
+  cp ~/.npmrc-$1 ~/.npmrc
+  echo -e "\nnow it's be like:\n"
+  cat ~/.npmrc
+}
+
+function recurseReplace() {
+  find ./ -type f -maxdepth 2 -name '$1' -exec sed -i '' $2 {} \;
+}
+
+
+function setupAF() {
+  curl -u$MY_LDAP_USERNAME $SPECTRUM_ARTIFACTORY_SNAPSHOT
 }
 
 
