@@ -1,0 +1,30 @@
+
+# ------------------------------
+# I like um have a profile, which is loaded from .bash_profile, because the internets
+#
+
+echo "Your .profile says 'HERE WE GO!'"
+
+. ~/bin/bashbits/profile_things.sh
+
+# SECRET STUFF
+# FFS nobody but you will ever see this comment
+# you nerd
+
+alias deploydocs='grunt deploy --username YOU CANNOT HAVE THIS --password YOU CANNOT HAVE THIS'
+alias go2dna='ssh YOU CANNOT HAVE THIS'
+alias go2spectrum.corp='ssh YOU CANNOT HAVE THIS'
+alias go2spectrum.corp.devbot='YOU CANNOT HAVE THIS'
+alias go2jenkins='ssh YOU CANNOT HAVE THIS@YOU CANNOT HAVE THIS'
+
+export ALTERNATE_GITHUB='YOU CANNOT HAVE THIS'
+export DEVBOT_PASSWD='YOU CANNOT HAVE THIS'
+export MY_LDAP_USERNAME='YOU CANNOT HAVE THIS'
+export SPECTRUM_ARTIFACTORY_SNAPSHOT='YOU CANNOT HAVE THIS'
+export SPECTRUM_ARTIFACTORY_RELEASE='YOU CANNOT HAVE THIS'
+
+export BS_ACCESSKEY=YOU CANNOT HAVE THIS
+export BS_USERNAME=YOU CANNOT HAVE THIS
+
+export SAUCE_USERNAME=YOU CANNOT HAVE THIS
+export SAUCE_ACCESS_KEY=YOU CANNOT HAVE THIS

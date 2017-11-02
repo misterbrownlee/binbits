@@ -1,0 +1,10 @@
+
+# don't fuck up interactive shells plz
+#
+[[ $- != *i* ]] && return
+
+# ok... let's do this
+# and not echos plz
+
+. ~/bin/bashbits/rc_things.sh
+

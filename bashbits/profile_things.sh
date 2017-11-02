@@ -9,5 +9,5 @@
 export DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "   --> imma gonna from $DOTFILES_PATH"
 
-. $DOTFILES_PATH/bash_aliases.sh
-. $DOTFILES_PATH/bash_path_stuff.sh
+. $DOTFILES_PATH/aliases.sh
+. $DOTFILES_PATH/path_stuff.sh
