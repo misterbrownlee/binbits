@@ -2,18 +2,23 @@
 
 # --------------------------------
 # the things that aren't teh others
-# echo '  loading wtf...'
+echo '  --> loading wtf ...'
 
 # --------------------------------
 # ulimit which node likes to break a lot
-echo '   --> setting ulimit -S -n 2048'
+echo '   --> it sets the ulimit -S -n 2048 or it gets the hose'
 ulimit -S -n 2048
 
 # --------------------------------
 # for git mostly
 export EDITOR="subl -w"
 
+
 # --------------------------------
+# I made this whole clusterfuck external
+# and then left this in here because bedtime lol
+#
+#
 #  colors codes              pair position in config string
 #  --------------            ----------------------
 #  (caps makes bold)         1 directory
@@ -31,6 +36,7 @@ export EDITOR="subl -w"
 # here are slightly dederped color variables
 # for configing... don't change these seriously k thx
 # probably none of this works on linux, so they have to suck it
+#
 LS_BLACK="a"
 LS_RED="b"
 LS_GREEN="c"
@@ -40,7 +46,8 @@ LS_MAGENTA="f"
 LS_CYAN="g"
 LS_GREY="h"
 
-# boldy go
+# boldy go yeeh
+#
 LS_DARK_GREY="A" # wft is bold black srsly
 LS_BOLD_RED="B"
 LS_BOLD_GREEN="C"
@@ -52,6 +59,7 @@ LS_BRIGHT_WHITE="H" # what even bold light gray ffs
 LS_DEFAULT="x"
 
 # this is the part you can fiddle with
+#
 DIRECTORY="$LS_CYAN $LS_DEFAULT"
 SYMLINK="$LS_BOLD_GREEN $LS_BLUE"
 SOCKET="$LS_BOLD_MAGENTA $LS_DEFAULT"
@@ -64,18 +72,27 @@ EXECUTABLE_SETGID="$LS_DEFAULT $LS_DEFAULT"
 DW_WITH_T="$LS_DEFAULT $LS_DEFAULT"
 DW_WITHOUT_T="$LS_DEFAULT $LS_DEFAULT"
 
+# and make the thing
+#
 LS_COLORS="$DIRECTORY $SYMLINK $SOCKET $PIPE $EXECUTABLE $BLOCK_SPECIAL $CHARACTER_SPECIAL"
 LS_COLORS="$LS_COLORS $EXECUTABLE_SETUID $EXECUTABLE_SETGID $DW_WITH_T $DW_WITHOUT_T"
+
+# and give a plenty
 export LSCOLORS="${LS_COLORS//[[:space:]]/}"
 export CLICOLOR=1
 
+# amen
+
+
 # --------------------------------
 # bash history
+#
 export HISTCONTROL=erasedups #ignoredups
+
 
 # --------------------------------
 # Some random colors
-
+#
 export COLOR_NC="\033[0m"
 export COLOR_WHITE="\033[1;37m"
 export COLOR_BLACK="\033[0;30m"
@@ -122,36 +139,45 @@ function showColors() {
 # --------------------------------
 # Add git related details to prompt if available
 # some set up around status coloring
+#
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   echo "   --> loading $(brew --prefix)/etc/bash_completion"
   . $(brew --prefix)/etc/bash_completion
 fi
 
-## add completion for aliases
+# --------------------------------
+#  add completion for aliases
+#
 echo "   --> setting completion for 'g'"
 __git_complete g __git_main
+
 echo "   --> setting completion for 'gco'"
 __git_complete gco _git_checkout
 
+
+# --------------------------------
 # some prompt config
+#
 GIT_PS1_SHOWCOLORHINTS='yut'
 GIT_PS1_SHOWUNTRACKEDFILES='kthx';
 GIT_PS1_SHOWDIRTYSTATE='srsly'
 
+
+# --------------------------------
 # new prompt hotness
-# PROMPT_COMMAND="__git_ps1 '$COLOR_GRAY\u$COLOR_LIGHT_GRAY@\h$YELLOW:\W $WHITE' ' \n➥ '"
-# PROMPT_COMMAND="__git_ps1 '$COLOR_GRAY\u$COLOR_LIGHT_GRAY@\h$YELLOW:\W $WHITE' ' \n➥ '"
-# PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_LIGHT_GRAY@\h$YELLOW:\W $WHITE' ' \n➥ '"
-# PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_LIGHT_CYAN@$COLOR_LIGHT_RED\h$COLOR_LIGHT_YELLOW:\W $COLOR_LIGHT_GRAY' ' \n➥ $COLOR_NC'"
+#
 PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_GRAY $COLOR_LIGHT_RED\h$COLOR_GRAY $COLOR_LIGHT_YELLOW\W$COLOR_NC' '$COLOR_LIGHT_GRAY\n=> '"
 
+
+# --------------------------------
+# because the node.js goat rodeo is my constant friend
+# 
 NODE_CURRENT=`node --version`
 NPM_CURRENT=`npm --version`
 echo "   --> using node $NODE_CURRENT / npm @$NPM_CURRENT"
 
 # once fucking node 8 actually it's LTS
-# this will be cool
-
+# this will be cool because n
 # LATEST_LTS=`n --lts`
 
 # if [ $LATEST_LTS != $NODE_CURRENT ]; then
@@ -160,11 +186,3 @@ echo "   --> using node $NODE_CURRENT / npm @$NPM_CURRENT"
 
 # meanwhile
 ! node --version | grep -q 'v8' && echo -e '\n\n     USE NODE 8 PLX !!!'
-# if [ $LATEST_LTS != $NODE_CURRENT ]; then
-#   echo "A newer LTS version ($LATEST_LTS) is available... you should update!"
-# fi
-
-
-
-
-
