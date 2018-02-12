@@ -11,6 +11,7 @@
 	<key>name</key>
 	<string>Ciapre</string>
 	<key>settings</key>
+<key>settings</key>
 	<array>
 		<dict>
 			<key>settings</key>
@@ -91,7 +92,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#DB592E</string>
+				<string>#FF8D1D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -528,6 +529,6 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>semanticClass</key>
-	<string>theme.dark.ciapre</string>
+	<string>theme.dark.srsly</string>
 </dict>
 </plist>
