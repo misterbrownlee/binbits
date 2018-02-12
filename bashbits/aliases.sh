@@ -38,15 +38,12 @@ alias wsvr='python -m SimpleHTTPServer'
 #
 #  how lazy am I?  Pretty fucking lazy it turns out.
 #
-export CORALUI_ROOT="/Users/brownlee/Documents/code/adobe-design/coral"
+alias cd2='cdad'
 alias cdcode='cdl ~/Documents/code'
 alias cdtools='cdl ~/Documents/code/tools'
 alias cdxd='cdl ~/Documents/code/adobe-design'
 alias cdfoo='cdl ~/Documents/code/mine'
 alias cdmine='cdl ~/Documents/code/mine'
-alias cdcoralui="cdl $CORALUI_ROOT"
-alias cdcomponents="cdl $CORALUI_ROOT/packages/components"
-alias cdocs='cdad; cd docs-for-coralui'
 alias components='cdcomponents'
 alias cmpt='cdcomponents'
 alias coralui='cdcoralui'
