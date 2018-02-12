@@ -41,14 +41,14 @@ function fragFolder {
 # and it never caught on
 # because muscle memory is way easier to configure I guess
 #
-function cd2() {
+# function cd2() {
 
-  RAW_PLACES=$(< ~/bin/randombits/places.txt)
-  declare -a places=(RAW_PLACES)
-  WHAT="$1"
-  WHERE="${!places[$1]}"
-  echo "cd to $WHAT; which is $WHERE"
-}
+#   RAW_PLACES=$(< ~/bin/randombits/places.txt)
+#   declare -a places=(RAW_PLACES)
+#   WHAT="$1"
+#   WHERE="${!places[$1]}"
+#   echo "cd to $WHAT; which is $WHERE"
+# }
 
 
 
@@ -277,9 +277,22 @@ function cdad() {
   echo -e "\nYou say $WHAT like I should know what that means...\n"
 
   case "$1" in
+    ls)
+      echo -e "You can pick:"
+      echo -e "  dna"
+      echo -e "  css"
+      echo -e "  bz (balthazar)"
+      echo -e "  abs (absacker)"
+      echo -e "  ico"
+      echo -e "  kul (kulcon)"
+      echo -e "  pro (prospero)"
+      echo -e "  \n"
+      return
+      ;;
+
     dna)
-      echo -e "Oh ... $WHAT is mapped to dna.corp!\n"
-      cdl "$AD_CODE_ROOT/dna.corp"
+      echo -e "Oh ... $WHAT is mapped to dna!\n"
+      cdl "$AD_CODE_ROOT/dna"
       return
       ;;
     css)
@@ -287,14 +300,29 @@ function cdad() {
       cdl "$AD_CODE_ROOT/spectrum-css"
       return
       ;;
-    sr)
-      echo -e "Ok ... $WHAT takes you to site-resources\n"
-      cdl "$AD_CODE_ROOT/site-resources"
+    abs)
+      echo -e "Ok ... $WHAT takes you to absacker\n"
+      cdl "$AD_CODE_ROOT/absacker"
       return
       ;;
-    bal)
+    ico)
+      echo -e "Mkay ... $WHAT takes you to spectrum-icons\n"
+      cdl "$AD_CODE_ROOT/spectrum-icons"
+      return
+      ;;
+    bz)
       echo -e "Ah ha ... $WHAT is mapped to balthazar!\n"
       cdl "$AD_CODE_ROOT/balthazar"
+      return
+      ;;
+    kul)
+      echo -e "Well ... $WHAT is mapped to kulcon!\n"
+      cdl "$AD_CODE_ROOT/_tools/kulcon"
+      return
+      ;;
+    pro)
+      echo -e "Jeee ... $WHAT is mapped to prospero!\n"
+      cdl "$AD_CODE_ROOT/prospero"
       return
       ;;
     *)
@@ -303,7 +331,7 @@ function cdad() {
       ;;
   esac
 
-  cd "$AD_CODE_ROOT/$1" && ll && printf "Now in \033[0;35m$PWD\n"
+  cd "$AD_CODE_ROOT/$1" && ll && printf "Now in ${COLOR_LIGHT_GREEN}$PWD\n"
 }
 
 function cdl() {
