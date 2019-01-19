@@ -167,11 +167,17 @@ GIT_PS1_SHOWDIRTYSTATE='srsly'
 # new prompt hotness
 #
 PROMPT_COMMAND="__git_ps1 '\n$COLOR_BLUE\u$COLOR_GRAY $COLOR_LIGHT_RED\h$COLOR_GRAY $COLOR_LIGHT_YELLOW\W$COLOR_NC' '$COLOR_LIGHT_GRAY\n=> '"
+# adding ${USER}@${HOSTNAME}: ${PWD} is nice, too
 
+function setPWDinTerminal() {
+  echo -ne "\033]0;${PWD##*/}\007"
+}
+
+export PROMPT_COMMAND="setPWDinTerminal;$PROMPT_COMMAND"
 
 # --------------------------------
 # because the node.js goat rodeo is my constant friend
-# 
+#
 NODE_CURRENT=`node --version`
 NPM_CURRENT=`npm --version`
 echo "   --> using node $NODE_CURRENT / npm @$NPM_CURRENT"

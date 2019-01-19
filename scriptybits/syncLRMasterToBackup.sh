@@ -25,21 +25,43 @@ echo "\nThis will backup the paths given if you just keep your pants on"
 # -z sets compress (during transfer)
 
 # Output:
-# > - the item is received
-# f - it is a regular file
-# d - a directory
-# s - the file size is different
-# t - the time stamp is different
-# p - permissions updated to match sender
 # +++++++++ - this is a newly created item
 
+# TMI: 'Y X c s t p o g z'
+#   'Y' is replaced by the type of update being done
+#   Update types that replace the Y are as follows:
+#     '<' sent aka transferred to the remote host
+#     '>' recieved aka transferred to the local host
+#     'c' local change/creation is occurring for the item such as the creation of a directory or the changing of a symlink, etc.
+#     'h' hard link to another item (requires --hard-links).
+#     '.' not being updated (though it might have attributes that are being modified).
+
+#   'X' is replaced by the file type
+#   File types:
+#     'f' for file
+#     'd' for a directory
+#     'L' for symlink
+#     'D' for device
+#     'S' for special
+
+# The attribute that is associated with each letter is as follows:
+#  'c': checksum of the file is different and will be updated by the file transfer (requires --checksum).
+#  's': size of the file is different and will be updated by the file transfer.
+#  't': time of modification is different and is being updated to the sender's value (requires  --times).  An alternate value of T means that the time will be set to the transfer time, which happens anytime a symlink is transferred, or  when  a  file  or  device  is transferred without --times.
+#  'p': permissions are different and are being updated to the sender's value (requires --perms)
+#  'o': owner is different and is being updated to the sender's value (requires --owner and super-user privileges).
+#  'g': group is different and is being updated to the sender's value (requires --group and the authority to set the group).
+
+#  The 'z' slot is reserved for future use.
+
 LR_MASTER="/Volumes/LR-Master-SSD"
-LR_BACKUP="/Volumes/WD-2TB-Backup"
+# LR_BACKUP="/Volumes/WD-2TB-Backup"
+
 LR_BACKUP_REPEAT="/Volumes/WD-2TB-Backup"
 FROM_PATH="$LR_MASTER/images/"
 TO_PATH="$LR_BACKUP/LR-Backup/"
 
-ARGS="-avz -r --delete --delete-excluded --itemize-changes --exclude-from /Users/brownlee/bin/bits/.rsyncExclude"
+ARGS="-avz -r --delete --delete-excluded --itemize-changes --exclude-from ~/.rsyncExclude"
 
 # {
 

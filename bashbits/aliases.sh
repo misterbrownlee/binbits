@@ -1,4 +1,3 @@
-
 # ---------------------------------
 #      Aliases go in here
 #
@@ -11,11 +10,13 @@ alias devbotwut='echo "$DEVBOT_PASSWD"'
 alias ff='findfile'
 alias findfile='find . -name'
 alias fixbash='edit $DOTFILES_PATH'
+alias fixgit='edit ~/bin/gitbits'
 alias fix-ddwrt='NOW=`date "+%m%d%H%M%Y"`; ssh root@192.168.1.10'
 alias ip='ifconfig | grep broadcast\ '
 alias iplan='ifconfig en3 | grep inet\ '
 alias ipwifi='ifconfig en0 | grep inet\ '
 alias ll='ls -lah'
+alias gs='gulp serve'
 alias now='date +"%m-%d-%Y %T"'
 alias passgen='openssl rand -base64 32'
 alias pingit='ssh -T git@github.com'
@@ -26,6 +27,7 @@ alias rlbash='. ~/.bash_profile'
 alias rlb='rlbash'
 alias sauce='sc -u brownlee -k $SAUCE_ACCESS_KEY'
 alias shrug='echo -e "" && echo -e "  ¯\_(ツ)_/¯ "'
+alias stpkg='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
 alias storeBgone='find . -name '*.DS_Store' -type f -delete'
 alias timestamp='date +%s'
 alias wsrv='wsvr'
@@ -76,8 +78,9 @@ alias cdup='cd .. && ll'
 alias dev='nrd'
 #alias dev='grunt dev --connect-port='
 alias gcc='xcrun gcc'
-alias bd='nr default'
-alias b='nrb'
+alias bd='n run default'
+alias b='npm run build'
+alias buildit='npm run build'
 alias bt='npm run test'
 
 # alias bdd='grunt default dev --devOnly'
@@ -108,6 +111,7 @@ alias vox='open -a Vox'
 # mongo
 # -------------------------
 #
+alias gomon='echo "staring mongo daemon..."; mongod --config /usr/local/etc/mongod.conf'
 # alias upmongo='launchctl load /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
 # alias downmongo='launchctl unload /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
 
@@ -124,9 +128,10 @@ alias ni="echo 'installing via npm...'; shrug; plzhold; echo ""; npm install; sa
 alias nln='npm link'
 alias nn='echo "removing node_modules..." && rm -rf node_modules'
 alias nr='npm run'
-alias nrb='npm run build'
-alias nrd='npm run dev'
-alias nrs='npm run -s'
+alias nr-b='npm run build'
+alias nr-s='npm run serve'
+alias nr-d='npm run dev'
+alias nr-t='npm run -s test'
 alias nuke-node-modules='fragFolder node_modules'
 
 
@@ -168,7 +173,7 @@ alias markdown-cheat="open -a /Applications/Google\ Chrome.app https://github.co
 #
 alias ding='afplay $SOUNDS_PATH/Ping.aiff'
 alias bitch='sudo' # kristofer joseph <3
-alias make-me-a-sandwich='echo "make it yourself, $USER..."'
+alias makes-me-a-sandwich='echo "make it yourself, $USER..."'
 alias beerme='echo "WOOOOOOOOOOO! 🍺 🍺 🍺 🍺 🍺 🍺 !!!!!!!!!"'
 
 # -------------------------

@@ -10,6 +10,9 @@ export AD_CODE_ROOT
 # git
 GIT_PATH="/usr/local/bin/git"
 
+# flutter.io
+FLUTTER_SDK='/Users/brownlee/Documents/code/tools/flutter'
+
 # random sounds
 SOUNDS_PATH=/System/Library/Sounds
 MORE_SOUNDS_PATH=/System/Library/PrivateFrameworks/ScreenReader.framework/Versions/A/Resources/Sounds/
@@ -22,7 +25,7 @@ export N_PREFIX="$HOME/n";
 # RVM=$HOME/.rvm/bin
 
 # export them
-export PATH=$PATH:~/bin:$GIT_PATH/bin:$N_PREFIX/bin
+export PATH=$PATH:~/bin:$GIT_PATH/bin:$N_PREFIX/bin:$FLUTTER_SDK/bin
 
 # ---------------------------------
 # ohai cruff...

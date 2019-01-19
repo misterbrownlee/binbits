@@ -14,6 +14,15 @@ function mkcd() {
 
 
 # ------------------------------------------------
+# because osx sucks
+#
+function unfuckWebcam() {
+    sudo killall VDCAssistant;
+    sudo killall AppleCameraAssistant;
+}
+
+
+# ------------------------------------------------
 # frag a named directory in all directories one level below this
 # mostly used to reclaim disk space from node_modules madness
 #
@@ -34,6 +43,10 @@ function fragFolder {
   done;
 }
 
+function ackOnceForEvery {
+  xargs -0 -n 1 ack --ignore-file=is:acked.txt < <(tr \\n \\0 <$1) >> acked.txt
+}
+
 
 # ------------------------------------------------
 # this is a nice idea for making a list of cd targets
@@ -49,6 +62,29 @@ function fragFolder {
 #   WHERE="${!places[$1]}"
 #   echo "cd to $WHAT; which is $WHERE"
 # }
+
+function mongup {
+  echo 'staring mongo daemon'
+  mongod --fork --logpath ~/.mongloog/mongo.log --config /usr/local/etc/mongod.conf
+}
+
+function mongcheck {
+  yep=`ps ax | grep mongod | grep -v grep`
+  [ -z "$yep" ] && echo "nope" || echo "mongod: $yep"
+}
+
+function mongtail {
+  tail -f -n 100 ~/.mongloog/mongo.log
+}
+
+function mongdown {
+  ps ax | grep mongod | grep -v grep | awk '{print "kill " $1}' | sh
+  echo 'shutdown mongo ok'
+}
+
+function mongclean {
+  rm -r ~/.mongloog/*
+}
 
 
 
@@ -105,6 +141,11 @@ function nwh() {
     end run' `pwd`
 }
 
+function clearLastLine() {
+  # because maybe this works
+  tput cuu 1 && tput el
+}
+
 
 # ------------------------------------------------
 # make karma not try to find phantom.js
@@ -126,13 +167,40 @@ function nwh() {
 # this makes the cow and a cat tell me if I have an IP yet
 #
 function ipmeow() {
-  STOP=${1:-15}
-  MEOW=0
+  STOP=${1:-6}
+  MEOW=1
   until [ $MEOW = $STOP ]; do
-      ip | cowsay
-      echo -e '  meow!  (=^ ◡ ^=)'
+      MESSAGE=`ip`;
+      MESSAGE+=$'\n\n+++++++++++++++++++++++++++\n'
+      MESSAGE+=$'\n\ninside:\n'
+      MESSAGE+=`ping -c 1 $ADOBE_INSIDE`
+      MESSAGE+=$'\n\n+++++++++++++++++++++++++++\n'
+      MESSAGE+=$'\n\nyahoo:\n'
+      MESSAGE+=`ping -c 1 yahoo.com`
+      MESSAGE+=$'\n\n'
+      cowsay -f small "$MESSAGE"
+      echo -e "\n\n $MEOW meow!  (=^ ◡ ^=)\n\n"
       ((MEOW++))
       sleep 3
+  done
+}
+
+function dns-yeller() {
+  STOP=${1:-60}
+  MEOW=1
+  WHERE=${1:-$ADOBE_INSIDE}
+  echo "Let's ping $WHERE"
+  echo -n " trying meow "
+  until [ $MEOW = $STOP ]; do
+    ping -W 500 -c 1 $WHERE &> /dev/null
+    if [ $? -eq 0 ]; then
+      echo "and it's OK!"
+      ip
+      break;
+    else
+      echo -n "."
+    fi
+    ((MEOW++))
   done
 }
 
@@ -165,7 +233,7 @@ function minty() {
   fi
   git up || { return; }
   ni || { return; }
-  grunt || { return; }
+  buildit || { return; }
 }
 
 
@@ -253,6 +321,10 @@ function releasepre() {
   git checkout master
 }
 
+function tagBetaSpectrum {
+   npm dist-tag add @spectrum/$1 beta
+}
+
 
 # ------------------------------------------------
 # delete a tag, on earth as it is in heaven, ahhhhh mens yeah
@@ -279,17 +351,26 @@ function cdad() {
   case "$1" in
     ls)
       echo -e "You can pick:"
-      echo -e "  dna"
-      echo -e "  css"
-      echo -e "  bz (balthazar)"
-      echo -e "  abs (absacker)"
-      echo -e "  ico"
-      echo -e "  kul (kulcon)"
-      echo -e "  pro (prospero)"
+      echo -e "  a4* (a4u-gateway)"
+      echo -e "  dna (spectrum-dna)"
+      echo -e "  css (spectrum-css)"
+      echo -e "  ex* (dna-example-build)"
+      echo -e "  bz|bal* (balthazar)"
+      echo -e "  abs* (absacker)"
+      echo -e "  ic* (spectrum-icons)"
+      echo -e "  ku* (kulcon)"
+      echo -e "  pro* (prospero)"
+      echo -e "  flutter (flutter.io)"
+      echo -e "  to* (_tools)"
       echo -e "  \n"
       return
       ;;
 
+    a4*)
+      echo -e "Yep ... $WHAT is mapped to a4u-gateway!\n"
+      cdl "$AD_CODE_ROOT/a4u-gateway"
+      return
+      ;;
     dna)
       echo -e "Oh ... $WHAT is mapped to dna!\n"
       cdl "$AD_CODE_ROOT/dna"
@@ -300,29 +381,44 @@ function cdad() {
       cdl "$AD_CODE_ROOT/spectrum-css"
       return
       ;;
-    abs)
-      echo -e "Ok ... $WHAT takes you to absacker\n"
-      cdl "$AD_CODE_ROOT/absacker"
+    abs*)
+      echo -e "Ok ... $WHAT takes you to _tools/absacker\n"
+      cdl "$AD_CODE_ROOT/_tools/absacker"
       return
       ;;
-    ico)
+    ex*)
+      echo -e "Ok ... $WHAT takes you to _tools/example-build\n"
+      cdl "$AD_CODE_ROOT/_tools/example-build"
+      return
+      ;;
+    ic*)
       echo -e "Mkay ... $WHAT takes you to spectrum-icons\n"
       cdl "$AD_CODE_ROOT/spectrum-icons"
       return
       ;;
-    bz)
+    bz|bal*)
       echo -e "Ah ha ... $WHAT is mapped to balthazar!\n"
       cdl "$AD_CODE_ROOT/balthazar"
       return
       ;;
-    kul)
-      echo -e "Well ... $WHAT is mapped to kulcon!\n"
+    ku*)
+      echo -e "Well ... $WHAT is mapped to _tools/kulcon!\n"
       cdl "$AD_CODE_ROOT/_tools/kulcon"
       return
       ;;
-    pro)
+    pro*)
       echo -e "Jeee ... $WHAT is mapped to prospero!\n"
       cdl "$AD_CODE_ROOT/prospero"
+      return
+      ;;
+    flutter)
+      echo -e "Woot. $WHAT is mapped to flutter.io\n"
+      cdl "~/Documents/code/tools/flutter"
+      return
+      ;;
+    to*)
+      echo -e "TOOLS! $WHAT is mapped to the _tools dir\n"
+      cdl "$AD_CODE_ROOT/_tools"
       return
       ;;
     *)
