@@ -46,7 +46,7 @@
 	],
 	"caret_style": "wide",
 	"color_pick_upcase": true,
-	"color_scheme": "Packages/User/WebExPert.tmTheme",
+	"color_scheme": "Packages/WebExPert - ColorScheme/WebExPert.tmTheme",
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"fade_fold_buttons": true,
@@ -60,7 +60,6 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Package Control",
 		"Vintage"
 	],
 	"ignored_words":
@@ -81,6 +80,7 @@
 	],
 	"spell_check": true,
 	"tab_size": 2,
+	"theme": "Spaceblack.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_automatic_white_space": false,
 	"wide_caret": true

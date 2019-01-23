@@ -10,12 +10,17 @@ export AD_CODE_ROOT
 # git
 GIT_PATH="/usr/local/bin/git"
 
+# sublime text
+export SUBLIME_ROOT="/Users/brownlee/Library/Application\ Support/Sublime\ Text\ 3/"
+export SUBLIME_PACKAGES="$SUBLIME_ROOT/Packages"
+export SUBLIME_PACKAGES_USER="$SUBLIME_PACKAGES/User"
+
 # flutter.io
-FLUTTER_SDK='/Users/brownlee/Documents/code/tools/flutter'
+# FLUTTER_SDK='/Users/brownlee/Documents/code/tools/flutter'
 
 # random sounds
-SOUNDS_PATH=/System/Library/Sounds
-MORE_SOUNDS_PATH=/System/Library/PrivateFrameworks/ScreenReader.framework/Versions/A/Resources/Sounds/
+export SOUNDS_PATH=/System/Library/Sounds
+export MORE_SOUNDS_PATH=/System/Library/PrivateFrameworks/ScreenReader.framework/Versions/A/Resources/Sounds/
 
 # n does this fancy other thing
 # but my bigboy pants tell me this will work ok
@@ -25,7 +30,7 @@ export N_PREFIX="$HOME/n";
 # RVM=$HOME/.rvm/bin
 
 # export them
-export PATH=$PATH:~/bin:$GIT_PATH/bin:$N_PREFIX/bin:$FLUTTER_SDK/bin
+export PATH=$PATH:~/bin:$GIT_PATH/bin:$N_PREFIX/bin
 
 # ---------------------------------
 # ohai cruff...
