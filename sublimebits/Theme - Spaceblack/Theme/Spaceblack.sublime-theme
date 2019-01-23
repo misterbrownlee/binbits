@@ -8,15 +8,15 @@
     {
         "class": "tabset_control",
         "layer0.texture": "",
-        // "layer0.tint": [21, 23, 27], // -00
-        // "layer0.tint": [29, 29, 38], // -00
+        // AB-Changed "layer0.tint": [21, 23, 27], // -00
+        //  AB-Changed "layer0.tint": [29, 29, 38], // -00
         "layer0.tint": [26, 29, 41], // -00
         "layer0.inner_margin": 0,
         "layer0.opacity": 1,
         "content_margin": 0,
-        // "tab_overlap": 0,
+        //  AB-Changed "tab_overlap": 0,
         "tab_overlap": -3,
-        // "tab_width": 128,
+        //  AB-Changed "tab_width": 128,
         "tab_width": 128,
         "tab_min_width": 48,
         "tab_height": 40,
@@ -54,7 +54,7 @@
         "class": "tab_control",
         "attributes": ["selected"],
         "layer0.texture": "",
-        // "layer0.tint": [26, 29, 35] // 00
+        // AB-Changed  "layer0.tint": [26, 29, 35] // 00
         "layer0.tint": [26, 29, 41] // 00
     },
     // Tab dirty state (close button hidden)
@@ -93,7 +93,7 @@
         "attributes": ["hover"],
         "layer0.opacity": 1,
         "layer0.tint": [235, 203, 139] // 08
-        // "layer0.tint": [191, 97, 106] // 08 
+        // AB-Changed  "layer0.tint": [191, 97, 106] // 08 
     },
     {
         "class": "tab_close_button",
@@ -121,7 +121,7 @@
         "layer0.texture": "Theme - Spaceblack/Icons/close.png",
         "attributes": ["hover"],
         "layer0.opacity": 1,
-        // "layer0.tint": [191, 97, 106] // 08
+        //  AB-Changed  "layer0.tint": [191, 97, 106] // 08
         "layer0.tint": [235, 203, 139] // 08
     },
     {
@@ -171,8 +171,8 @@
         "class": "tab_label",
         "parents": [{"class": "tab_control","attributes": ["selected"]}],
         "fg": [223, 225, 232] // 06
-        // "fg": [255, 255, 210] // 06
-        // "fg": [201, 235, 255] // 06
+        // AB-Changed  "fg": [255, 255, 210] // 06
+        // AB-Changed  "fg": [201, 235, 255] // 06
     },
     {
         "class": "tab_label",
@@ -194,7 +194,7 @@
     {
         "class": "tab_label",
         "settings": ["spaceblack_tabs_font_large"],
-        // "font.face": "Adobe Clean SemiLight",
+        // AB-Changed  "font.face": "Adobe Clean SemiLight",
         "font.face": "Gil Sans Light",
         "font.size": 13.0
     },
@@ -239,7 +239,8 @@
     {
         "class": "scroll_bar_control",
         "layer0.texture": "",
-        "layer0.tint": [21, 23, 27], // -01
+        // AB-Changed  "layer0.tint": [21, 23, 27], // -01
+        "layer0.tint": [26, 29, 41], // -01
         "layer0.opacity": 1,
         "layer0.inner_margin": [0,0],
         "blur": true
@@ -275,7 +276,7 @@
     {
         "class": "puck_control",
         "attributes": ["horizontal"],
-        // "layer0.texture": "",
+        //  AB-Changed  "layer0.texture": "",
         "layer0.tint": [41, 47, 55], // 01
         "layer0.inner_margin": [0,0],
         "content_margin": [12,6],
@@ -360,6 +361,7 @@
     {
         "class": "sheet_container_control",
         "layer0.tint": [26, 29, 35],
+        // AB-Changed  "layer0.tint": [26, 29, 35],
         "layer0.opacity": 1
     },
 
@@ -481,7 +483,8 @@
     {
         "class": "tree_row",
         "attributes": ["selected"],
-        "layer0.opacity": 1
+        //  AB-Changed "layer0.opacity": 1
+        "layer0.opacity": 0
     },
     // Sidebar heading
     {
