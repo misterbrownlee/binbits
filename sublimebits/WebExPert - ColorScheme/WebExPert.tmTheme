@@ -12,7 +12,7 @@
       <key>settings</key>
       <dict>
         <key>background</key>
-        <string>#000</string>
+        <string>#1a1d29</string>
         <key>caret</key>
         <string>#CCCCCC</string>
         <key>foreground</key>
@@ -33,7 +33,8 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#23334f</string>
+        <!-- string>#23334f</string -->
+        <string>#666</string>
       </dict>
     </dict>
     <dict>
@@ -97,9 +98,9 @@
         <string>#DCF87E</string>
       </dict>
     </dict>
-    
-    
-    
+
+
+
     <dict>
       <key>name</key>
       <string>SQL: Create Keyword</string>
@@ -144,8 +145,8 @@
         <string>#E11717</string>
       </dict>
     </dict>
-    
-    
+
+
     <dict>
       <key>name</key>
       <string>Markdown: ListNumbered</string>
@@ -300,8 +301,8 @@
         <string>#77884A</string>
       </dict>
     </dict>
-    
-    
+
+
     <dict>
       <key>name</key>
       <string>Number, Constant, Function Argument, Embedded</string>
@@ -315,7 +316,7 @@
         <string>#ECAB84</string>
       </dict>
     </dict>
-    
+
     <dict>
       <key>name</key>
       <string>Embedded</string>
@@ -399,7 +400,7 @@
       <string>string, constant.other.symbol, entity.other.inherited-class, markup.heading</string>
       <key>settings</key>
       <dict>
-        <key>fontStyle</key> 
+        <key>fontStyle</key>
         <string></string>
         <key>foreground</key>
         <string>#a9cccc</string>
@@ -495,7 +496,7 @@
         <key>foreground</key>
         <string>#FFFFFF</string>
       </dict>
-    </dict>       
+    </dict>
     <dict>
       <key>name</key>
       <string>Diff insertion</string>
@@ -544,7 +545,7 @@
         <string>#3e999f</string>
       </dict>
     </dict>
-    
+
     <dict>
       <key>name</key>
       <string>JS: all</string>
@@ -565,7 +566,7 @@
       <dict>
         <key>foreground</key>
         <string>#C6BEA8</string>
-      </dict> 
+      </dict>
     </dict>
     <dict>
       <key>name</key>
@@ -622,8 +623,8 @@
         <string>#ACA362</string>
       </dict>
     </dict>
-    
-    
+
+
     <dict>
       <key>name</key>
       <string>HTML: DocType</string>
@@ -754,7 +755,7 @@
         <key>fontStyle</key>
         <string></string>
         <key>foreground</key>
-        <string>#D7CBA8</string> 
+        <string>#D7CBA8</string>
       </dict>
     </dict>
     <dict>
@@ -767,7 +768,7 @@
         <key>fontStyle</key>
         <string></string>
         <key>foreground</key>
-        <string>#DAD7F4</string> 
+        <string>#DAD7F4</string>
       </dict>
     </dict>
     <dict>
@@ -778,7 +779,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#FFE215</string> 
+        <string>#FFE215</string>
       </dict>
     </dict>
     <dict>
@@ -789,7 +790,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#F2777A</string> 
+        <string>#F2777A</string>
       </dict>
     </dict>
     <dict>
@@ -803,7 +804,7 @@
         <string></string>
         <key>foreground</key>
         <string>#FF4A4A</string>
-      </dict> 
+      </dict>
     </dict>
     <dict>
       <key>name</key>
@@ -831,7 +832,7 @@
         <string>#EA2020</string>
       </dict>
     </dict>
-    
+
   </array>
   <key>uuid</key>
   <string>5ee44a11-1876-498f-9190-372117ad513c</string>
