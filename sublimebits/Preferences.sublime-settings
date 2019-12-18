@@ -19,7 +19,9 @@
 		"solutionswitcher",
 		"orgswitcher",
 		"menubar",
-		"cssdoc"
+		"cssdoc",
+		"Windermere",
+		"a4u"
 	],
 	"auto_complete_commit_on_tab": true,
 	"binary_file_patterns":
@@ -56,7 +58,7 @@
 		"tmp",
 		"temp"
 	],
-	"font_size": 14,
+	"font_size": 18,
 	"highlight_line": true,
 	"ignored_packages":
 	[
@@ -78,7 +80,10 @@
 		80,
 		120
 	],
+	"spaceblack_sidebar_font_xlarge": true,
+	"spaceblack_sidebar_tree_large": true,
 	"spell_check": true,
+	"tab_completion": false,
 	"tab_size": 2,
 	"theme": "Spaceblack.sublime-theme",
 	"translate_tabs_to_spaces": true,
