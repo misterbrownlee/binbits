@@ -149,7 +149,7 @@ alias gpo='g p origin'
 alias gst='g st'
 
 alias fetch='git fetch'
-alias master='g master'
+alias main='g main'
 alias nuke='git nuke'
 alias prune='git prune'
 alias unstage='g unstage'

@@ -13,7 +13,7 @@
   ac = !git add -A && git commit -m
   b = branch
   ba = !git branch -a
-  branch-nuke = !git remote prune origin && git branch --merged | grep -v "master" | xargs git branch -D
+  branch-nuke = !git remote prune origin && git branch --merged | grep -v "main" | xargs git branch -D
   c = commit
   cam = !git commit --amend
   cleanup = !git branchnuke && git gc && git clean -xdf
@@ -21,17 +21,17 @@
   co = checkout
   config-is = config -l
   diff = !git diff --diff-filter=ACMRTUXB
-  master = !git co master
+  main = !git co main
   nb = !git checkout -b
   p = push
   prune = !git remote prune origin
-  rebase-master = !git fetch && git rebase origin/master
+  rebase-main = !git fetch && git rebase origin/main
   st = status --short
   t = tag
   undo =checkout --
   unstage = !git reset HEAD
-  up = !git fetch && git co master && git rebase origin/master && git remote prune origin
-  upff = !git remote update -p && git merge --ff-only origin/rebase-master
+  up = !git fetch && git co main && git rebase origin/main && git remote prune origin
+  upff = !git remote update -p && git merge --ff-only origin/rebase-main
 [core]
 	quotepath = false
 	autocrlf = input
