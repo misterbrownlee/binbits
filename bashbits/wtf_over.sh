@@ -191,4 +191,4 @@ echo "   --> using node $NODE_CURRENT / npm @$NPM_CURRENT"
 # fi
 
 # meanwhile
-! node --version | grep -q 'v8' && echo -e '\n\n     USE NODE 8 PLX !!!'
+# ! node --version | grep -q 'v8' && echo -e '\n\n     USE NODE 8 PLX !!!'

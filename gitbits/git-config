@@ -4,7 +4,7 @@
 [credential]
   helper = osxkeychain
 [color]
-  ui = true
+  ui = auto
 [branch]
   autosetuprebase = never
 [alias]
@@ -13,7 +13,8 @@
   ac = !git add -A && git commit -m
   b = branch
   ba = !git branch -a
-  branch-nuke = !git remote prune origin && git branch --merged | grep -v "main" | xargs git branch -D
+  branch-prune = !git remote prune origin
+  brange-merge-nuke = git branch --merged | grep -v "main" | xargs git branch -D
   c = commit
   cam = !git commit --amend
   cleanup = !git branchnuke && git gc && git clean -xdf
@@ -24,13 +25,14 @@
   main = !git co main
   nb = !git checkout -b
   p = push
-  prune = !git remote prune origin
   rebase-main = !git fetch && git rebase origin/main
   st = status --short
   t = tag
   undo =checkout --
   unstage = !git reset HEAD
-  up = !git fetch && git co main && git rebase origin/main && git remote prune origin
+  up = !git fetch && git co main && git merge --ff-only origin/main && git remote prune origin
+  upbeta = !git fetch && git co beta && git merge --ff-only origin/beta && git remote prune origin
+  
   upff = !git remote update -p && git merge --ff-only origin/rebase-main
 [core]
 	quotepath = false

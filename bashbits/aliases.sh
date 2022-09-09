@@ -1,37 +1,37 @@
 # ---------------------------------
 #      Aliases go in here
-#
 
 # -------------------------
 # general stuff
 #
-alias epoch='date "+%s"'
+alias clock='tty-clock -C 3'
 alias devbotwut='echo "$DEVBOT_PASSWD"'
+alias epoch='date "+%s"'
 alias ff='findfile'
 alias findfile='find . -name'
 alias fixbash='edit $DOTFILES_PATH'
 alias fixgit='edit ~/bin/gitbits'
-alias fix-ddwrt='NOW=`date "+%m%d%H%M%Y"`; ssh root@192.168.1.10'
+alias gs='gulp serve'
 alias ip='ifconfig | grep broadcast\ '
 alias iplan='ifconfig en3 | grep inet\ '
 alias ipwifi='ifconfig en0 | grep inet\ '
 alias ll='ls -lah'
-alias gs='gulp serve'
 alias now='date +"%m-%d-%Y %T"'
 alias passgen='openssl rand -base64 32'
 alias pingit='ssh -T git@github.com'
 alias pingitcorp='ssh -T $ADOBE_GITHUB'
 alias psrv='wsvr'
 alias reload-bash='rlbash'
-alias rlbash='. ~/.bash_profile'
 alias rlb='rlbash'
+alias rlbash='. ~/.bash_profile'
 alias sauce='sc -u brownlee -k $SAUCE_ACCESS_KEY'
 alias shrug='echo -e "" && echo -e "  ¯\_(ツ)_/¯ "'
-alias stpkg='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
 alias storeBgone='find . -name '*.DS_Store' -type f -delete'
+alias stpkg='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
 alias timestamp='date +%s'
 alias wsrv='wsvr'
 alias wsvr='python -m SimpleHTTPServer'
+# alias fix-ddwrt='NOW=`date "+%m%d%H%M%Y"`; ssh root@192.168.1.10'
 
 
 # -------------------------
@@ -41,18 +41,6 @@ alias wsvr='python -m SimpleHTTPServer'
 #  how lazy am I?  Pretty fucking lazy it turns out.
 #
 alias cd2='cdad'
-alias cdcode='cdl ~/Documents/code'
-alias cdtools='cdl ~/Documents/code/tools'
-alias cdxd='cdl ~/Documents/code/adobe-design'
-alias cdfoo='cdl ~/Documents/code/mine'
-alias cdmine='cdl ~/Documents/code/mine'
-alias components='cdcomponents'
-alias cmpt='cdcomponents'
-alias coralui='cdcoralui'
-alias coral='cdad coral'
-alias cui='cdcoralui'
-alias xd='cdad'
-alias ad='cdad'
 alias back='cdl -'
 alias code='cdad'
 alias docs='cdl ~/Documents'
@@ -61,14 +49,26 @@ alias mine='cdl ~'
 alias desk='cdl ~/Desktop'
 alias desktop='cdl ~/Desktop'
 alias root='echo "YOU GOT NOTHIN"; cdl ~'
-alias dna='cdad dna'
-alias cddna='cdad dna'
-alias css='cdad css'
-alias cdcss='cdad css'
-alias bal='cdad bal'
-alias cdbal='cdad bal'
 alias up='cd .. && ll'
 alias cdup='cd .. && ll'
+# alias cdcode='cdl ~/Documents/code'
+# alias cdtools='cdl ~/Documents/code/tools'
+# alias cdxd='cdl ~/Documents/code/adobe-design'
+# alias cdfoo='cdl ~/Documents/code/mine'
+# alias cdmine='cdl ~/Documents/code/mine'
+# alias components='cdcomponents'
+# alias cmpt='cdcomponents'
+# alias coralui='cdcoralui'
+# alias coral='cdad coral'
+# alias cui='cdcoralui'
+# alias xd='cdad'
+# alias ad='cdad'
+# alias dna='cdad dna'
+# alias cddna='cdad dna'
+# alias css='cdad css'
+# alias cdcss='cdad css'
+# alias bal='cdad bal'
+# alias cdbal='cdad bal'
 
 
 # -------------------------
@@ -76,13 +76,8 @@ alias cdup='cd .. && ll'
 # -------------------------
 #
 alias dev='nrd'
-#alias dev='grunt dev --connect-port='
 alias gcc='xcrun gcc'
-alias bd='n run default'
-alias b='npm run build'
-alias buildit='npm run build'
-alias bt='npm run test'
-
+#alias dev='grunt dev --connect-port='
 # alias bdd='grunt default dev --devOnly'
 # alias bddd='grunt default dev-dist'
 # alias bd3='bddd'
@@ -96,7 +91,8 @@ alias bt='npm run test'
 alias atom='open -a Atom'
 alias brak='open -a Brackets'
 alias edit-profile='fixbash'
-alias edit='subl'
+# alias edit='subl'
+alias edit='open -a /Applications/Visual\ Studio\ Code.app/'
 alias here='edit .'
 alias this='here --background'
 
@@ -128,12 +124,17 @@ alias ni="echo 'installing via npm...'; shrug; plzhold; echo ""; npm install; sa
 alias nln='npm link'
 alias nn='echo "removing node_modules..." && rm -rf node_modules'
 alias nr='npm run'
-alias nr-b='npm run build'
-alias nr-s='npm run serve'
-alias nr-d='npm run dev'
-alias nr-t='npm run -s test'
 alias nuke-node-modules='fragFolder node_modules'
+# alias nr-b='npm run build'
+# alias nr-d='npm run dev'
+# alias nr-s='npm run serve'
+# alias nr-t='npm run -s test'
 
+# -------------------------
+# yarhnnnn
+# -------------------------
+alias yr='yarn run'
+alias yi='yarn install'
 
 # -------------------------
 # git - aliases for .gitconfig aliases because typing

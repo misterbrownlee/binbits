@@ -12,6 +12,11 @@ function mkcd() {
     mkdir $1; cd $1
 }
 
+# fire up VS Code
+function vscode() {
+  open -a /Applications/Visual\ Studio\ Code.app/ $1
+}
+
 
 # ------------------------------------------------
 # because osx sucks
@@ -63,28 +68,28 @@ function ackOnceForEvery {
 #   echo "cd to $WHAT; which is $WHERE"
 # }
 
-function mongup {
-  echo 'staring mongo daemon'
-  mongod --fork --logpath ~/.mongloog/mongo.log --config /usr/local/etc/mongod.conf
-}
+# function mongup {
+#   echo 'staring mongo daemon'
+#   mongod --fork --logpath ~/.mongloog/mongo.log --config /usr/local/etc/mongod.conf
+# }
 
-function mongcheck {
-  yep=`ps ax | grep mongod | grep -v grep`
-  [ -z "$yep" ] && echo "nope" || echo "mongod: $yep"
-}
+# function mongcheck {
+#   yep=`ps ax | grep mongod | grep -v grep`
+#   [ -z "$yep" ] && echo "nope" || echo "mongod: $yep"
+# }
 
-function mongtail {
-  tail -f -n 100 ~/.mongloog/mongo.log
-}
+# function mongtail {
+#   tail -f -n 100 ~/.mongloog/mongo.log
+# }
 
-function mongdown {
-  ps ax | grep mongod | grep -v grep | awk '{print "kill " $1}' | sh
-  echo 'shutdown mongo ok'
-}
+# function mongdown {
+#   ps ax | grep mongod | grep -v grep | awk '{print "kill " $1}' | sh
+#   echo 'shutdown mongo ok'
+# }
 
-function mongclean {
-  rm -r ~/.mongloog/*
-}
+# function mongclean {
+#   rm -r ~/.mongloog/*
+# }
 
 
 
@@ -342,91 +347,9 @@ function rmtag() {
 # just the shortcut to the main dev folder is nice tho
 #
 function cdad() {
-
   WHAT="${COLOR_LIGHT_GREEN}cdad"
   WHAT+=" $1${COLOR_NC}"
-
-  echo -e "\nYou say $WHAT like I should know what that means...\n"
-
-  case "$1" in
-    ls)
-      echo -e "You can pick:"
-      echo -e "  a4* (a4u-gateway)"
-      echo -e "  dna (spectrum-dna)"
-      echo -e "  css (spectrum-css)"
-      echo -e "  ex* (dna-example-build)"
-      echo -e "  bz|bal* (balthazar)"
-      echo -e "  abs* (absacker)"
-      echo -e "  ic* (spectrum-icons)"
-      echo -e "  ku* (kulcon)"
-      echo -e "  pro* (prospero)"
-      echo -e "  flutter (flutter.io)"
-      echo -e "  to* (_tools)"
-      echo -e "  \n"
-      return
-      ;;
-
-    a4*)
-      echo -e "Yep ... $WHAT is mapped to a4u-gateway!\n"
-      cdl "$AD_CODE_ROOT/a4u-gateway"
-      return
-      ;;
-    dna)
-      echo -e "Oh ... $WHAT is mapped to dna!\n"
-      cdl "$AD_CODE_ROOT/dna"
-      return
-      ;;
-    css)
-      echo -e "Hmm ... $WHAT is mapped to spectrum-css!\n"
-      cdl "$AD_CODE_ROOT/spectrum-css"
-      return
-      ;;
-    abs*)
-      echo -e "Ok ... $WHAT takes you to _tools/absacker\n"
-      cdl "$AD_CODE_ROOT/_tools/absacker"
-      return
-      ;;
-    ex*)
-      echo -e "Ok ... $WHAT takes you to _tools/example-build\n"
-      cdl "$AD_CODE_ROOT/_tools/example-build"
-      return
-      ;;
-    ic*)
-      echo -e "Mkay ... $WHAT takes you to spectrum-icons\n"
-      cdl "$AD_CODE_ROOT/spectrum-icons"
-      return
-      ;;
-    bz|bal*)
-      echo -e "Ah ha ... $WHAT is mapped to balthazar!\n"
-      cdl "$AD_CODE_ROOT/balthazar"
-      return
-      ;;
-    ku*)
-      echo -e "Well ... $WHAT is mapped to _tools/kulcon!\n"
-      cdl "$AD_CODE_ROOT/_tools/kulcon"
-      return
-      ;;
-    pro*)
-      echo -e "Jeee ... $WHAT is mapped to prospero!\n"
-      cdl "$AD_CODE_ROOT/prospero"
-      return
-      ;;
-    flutter)
-      echo -e "Woot. $WHAT is mapped to flutter.io\n"
-      cdl "~/Documents/code/tools/flutter"
-      return
-      ;;
-    to*)
-      echo -e "TOOLS! $WHAT is mapped to the _tools dir\n"
-      cdl "$AD_CODE_ROOT/_tools"
-      return
-      ;;
-    *)
-      echo -e "$WHAT is not something I know about... \n"
-      echo -e "I'll just cd to ${COLOR_LIGHT_GREEN}$AD_CODE_ROOT/$1${COLOR_NC}\n"
-      ;;
-  esac
-
+  echo -e "changing dir to ${COLOR_LIGHT_GREEN}$AD_CODE_ROOT/$1${COLOR_NC}\n"
   cd "$AD_CODE_ROOT/$1" && ll && printf "Now in ${COLOR_LIGHT_GREEN}$PWD\n"
 }
 
@@ -439,14 +362,14 @@ function cdl() {
 # you could make this run on every cd
 # but you'd be pretty fucking stupid if you did
 #
-function checkNvm() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  elif [[ $(nvm version) != $(nvm version default)  ]]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
+# function checkNvm() {
+#   if [[ -f .nvmrc && -r .nvmrc ]]; then
+#     nvm use
+#   elif [[ $(nvm version) != $(nvm version default)  ]]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
 
 # ------------------------------------------------
 # this juggles your .npmrc files so you can push to different targets
@@ -458,14 +381,14 @@ function checkNvm() {
 # and I do.
 # it's a fucking train wreck.
 #
-function switchNpmrc() {
-  echo -e "\nSwitching to the $1 .npmrc configuration"
-  # mv ~/.npmrc ~/.npmrc-last
-  # cp ~/.npmrc-last ~/.npmrc-undo
-  cp ~/.npmrc-$1 ~/.npmrc
-  echo -e "\nnow it's be like:\n"
-  cat ~/.npmrc
-}
+# function switchNpmrc() {
+#   echo -e "\nSwitching to the $1 .npmrc configuration"
+#   # mv ~/.npmrc ~/.npmrc-last
+#   # cp ~/.npmrc-last ~/.npmrc-undo
+#   cp ~/.npmrc-$1 ~/.npmrc
+#   echo -e "\nnow it's be like:\n"
+#   cat ~/.npmrc
+# }
 
 function recurseReplace() {
   find ./ -type f -maxdepth 2 -name '$1' -exec sed -i '' $2 {} \;
@@ -473,7 +396,7 @@ function recurseReplace() {
 
 
 function setupAF() {
-  curl -u$MY_LDAP_USERNAME $SPECTRUM_ARTIFACTORY_SNAPSHOT
+  curl -u$MY_LDAP_USERNAME:$ARTIFACTORY_API_KEY $SPECTRUM_ARTIFACTORY_RELEASE 
 }
 
 

@@ -21,7 +21,19 @@
 		"menubar",
 		"cssdoc",
 		"Windermere",
-		"a4u"
+		"a4u",
+		"issuetype",
+		"Wecu",
+		"etrade",
+		"Mahonia",
+		"15k",
+		"mahonia",
+		"whws",
+		"Utils",
+		"10k",
+		"toyota",
+		"xfer",
+		"nissan"
 	],
 	"auto_complete_commit_on_tab": true,
 	"binary_file_patterns":
@@ -58,11 +70,11 @@
 		"tmp",
 		"temp"
 	],
-	"font_size": 17,
+	"font_size": 15,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -88,5 +100,5 @@
 	"theme": "Spaceblack.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_automatic_white_space": false,
-	"wide_caret": true
+	"wide_caret": true,
 }
