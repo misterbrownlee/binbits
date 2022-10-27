@@ -133,8 +133,11 @@ alias nuke-node-modules='fragFolder node_modules'
 # -------------------------
 # yarhnnnn
 # -------------------------
+alias y='yarn'
 alias yr='yarn run'
 alias yi='yarn install'
+alias yrb='yarn run build'
+alias yup='yarn upgrade'
 
 # -------------------------
 # git - aliases for .gitconfig aliases because typing
