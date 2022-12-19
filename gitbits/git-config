@@ -1,14 +1,17 @@
 [user]
   name = brownlee
   email = brownlee@adobe.com
+
 [credential]
   helper = osxkeychain
+
 [color]
   ui = auto
+
 [branch]
   autosetuprebase = never
-[alias]
 
+[alias]
   a = add
   ac = !git add -A && git commit -m
   b = branch
@@ -32,13 +35,14 @@
   unstage = !git reset HEAD
   up = !git fetch && git co main && git merge --ff-only origin/main && git remote prune origin
   upbeta = !git fetch && git co beta && git merge --ff-only origin/beta && git remote prune origin
-  
-  upff = !git remote update -p && git merge --ff-only origin/rebase-main
+
 [core]
 	quotepath = false
 	autocrlf = input
 	excludesfile = /Users/brownlee/.gitignore_global
+
 [push]
 	default = simple
+
 [merge "ours"]
 	driver = true
