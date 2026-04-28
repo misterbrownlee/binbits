@@ -1,4 +1,5 @@
-subl
+.claude
+CLAUDE.md
 
 # local machine overrides — never commit these
 *.local
@@ -6,3 +7,5 @@ subl
 .env.*
 secrets
 secrets.*
+
+
