@@ -9,7 +9,7 @@
 # I wish I used this more but I'm too stupid to remember
 #
 function mkcd() {
-    mkdir $1; cd $1
+    mkdir "$1"; cd "$1"
 }
 
 # fire up VS Code
@@ -35,17 +35,17 @@ function fragFolder {
   # could just try find . -type d -maxdepth 2 -name "*$1*" -exec rm -ri {} \;
   # but this works and I like the echo messages better
 
-  FRAG_TARGETS=`find . -type d -maxdepth 2 -name *$1*`
+  FRAG_TARGETS=$(find . -type d -maxdepth 2 -name "*$1*")
 
-  if [ -z "$FRAG_TARGETS" ]
-  then
+  if [ -z "$FRAG_TARGETS" ]; then
     echo "No targets found."
+    return
   fi
 
-  for target in $FRAG_TARGETS; do
+  while IFS= read -r target; do
     echo "fragging $target"
-    rm -rf $target
-  done;
+    rm -rf "$target"
+  done <<< "$FRAG_TARGETS"
 }
 
 function ackOnceForEvery {
@@ -106,7 +106,7 @@ function plzhold() {
 # stop playing hold music
 #
 function plzstop() {
-  ps ax | grep afplay | grep -v grep | awk '{print "kill " $1}' | sh
+  pkill -f afplay
 }
 
 
@@ -123,7 +123,7 @@ function rmd() {
 # I pretty much also never use this lol
 #
 function newfile() {
-  touch $1; edit $1
+  touch "$1"; edit "$1"
 }
 
 
@@ -396,7 +396,7 @@ function recurseReplace() {
 
 
 function setupAF() {
-  curl -u$MY_LDAP_USERNAME:$ARTIFACTORY_API_KEY $SPECTRUM_ARTIFACTORY_RELEASE 
+  curl -u "${MY_LDAP_USERNAME}:${ARTIFACTORY_API_KEY}" "${SPECTRUM_ARTIFACTORY_RELEASE}"
 }
 
 

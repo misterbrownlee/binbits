@@ -5,7 +5,7 @@
 # general stuff
 #
 alias clock='tty-clock -C 3'
-alias devbotwut='echo "$DEVBOT_PASSWD"'
+# devbotwut removed — echoing credential env vars leaks them to shell history
 alias epoch='date "+%s"'
 alias ff='findfile'
 alias findfile='find . -name'
@@ -24,7 +24,7 @@ alias psrv='wsvr'
 alias reload-bash='rlbash'
 alias rlb='rlbash'
 alias rlbash='. ~/.bash_profile'
-alias sauce='sc -u brownlee -k $SAUCE_ACCESS_KEY'
+alias sauce='sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY'
 alias shrug='echo -e "" && echo -e "  ¯\_(ツ)_/¯ "'
 alias storeBgone='find . -name '*.DS_Store' -type f -delete'
 alias stpkg='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'

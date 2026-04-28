@@ -1,1 +1,8 @@
 subl
+
+# local machine overrides — never commit these
+*.local
+.env
+.env.*
+secrets
+secrets.*

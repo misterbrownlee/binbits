@@ -59,7 +59,7 @@ function plzstop() {
 # output the spectrum thing that goes in your .npmrc
 #
 function spectrumAF() {
-  curl -u$MY_LDAP_USERNAME:$ARTIFACTORY_API_KEY $SPECTRUM_ARTIFACTORY_RELEASE 
+  curl -u "${MY_LDAP_USERNAME}:${ARTIFACTORY_API_KEY}" "${SPECTRUM_ARTIFACTORY_RELEASE}"
 }
 
 
@@ -67,5 +67,5 @@ function spectrumAF() {
 # output the a4u thing that goes in your .npmrc
 #
 function a4uAF() {
-  curl -u$MY_LDAP_USERNAME:$ARTIFACTORY_API_KEY $SPECTRUM_ARTIFACTORY_RELEASE 
+  curl -u "${MY_LDAP_USERNAME}:${ARTIFACTORY_API_KEY}" "${SPECTRUM_ARTIFACTORY_RELEASE}"
 }
