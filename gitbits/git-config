@@ -46,3 +46,5 @@
 
 [merge "ours"]
 	driver = true
+[init]
+	defaultBranch = main
