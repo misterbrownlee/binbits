@@ -2,48 +2,30 @@ binbits
 =======
 
 # THIS README IS ALWAYS WRONG 
-# so watch y'self foo
+
+so watch y'self foo
 
 Things for ~/bin, which includes bash startup stuff, git configuration, sublime text things, some hold music, and a picture of a naked lady.
 
 PS. One of the above is a lie.
 
-The bash bits are particulary nice. We once in a while need to remember how this all is set up. Here, I remind myself to do this:
+# Structure
 
-```bash
-cd
-git clone git@github.com:misterbrownlee/binbits.git bin
-cd bin
-DOTFILES_CLONE=`cwd`
-cd ..
-ln -s $DOTFILES_CLONE/gitbits/git-config .gitconfig
-ln -s $DOTFILES_CLONE/gitbits/gitignore_global .gitignore_global
+- `bashbits/` - bash startup scripts (bash_profile, bashrc, profile examples + sourced helpers)
+- `zshbits/` - zsh config (aliases, extras, greeting, zprofile/zshrc extras, oh-my-zsh theme)
+- `gitbits/` - git config (gitignore_global; symlinked to `~/.gitconfig`, `~/.gitignore_global`)
+- `sublimebits/` - Sublime Text 3 settings, keymaps, themes (symlinked into ST3 Packages/User)
+- `terminalbits/` - Terminal.app themes
+- `scriptybits/` - standalone utility shell scripts
+- `dotrcbits/` - misc dotrc files (ackrc, rsyncExclude)
+- `cheatbits/` - quick reference markdown cheat sheets
+- `randombits/` - miscellaneous (terminal themes, hold music)
+- `claudebits/` - Claude Code global config (symlinked into `~/.claude/`)
 
-# Now me does
-cat $DOTFILES_CLONE/bashbits/example_bash_profile.txt" >> .bash_profile
-cat $DOTFILES_CLONE/bashbits/example_bashrc.txt" >> .bashrc
-cat $DOTFILES_CLONE/bashbits/example_profile.txt" >> .profile
+# Set up
 
-# This stuff is what is in .bash_profile usually
-# but not mine, because I believe everything I read on stackexchange
-# I put this here to remind myself of what past me used to do
-```shell
-if [ -f ~/.bashrc ]; 
-then
-   source ~/.bashrc
-fi
-```
+Generally, we clone this repo is to `~/Code/tools/binbits` or we get the hose. 
 
-You can read `./bashbits/example_bash_profile.txt` if you wanna know more.
+Configuration then is wired up by symlinking files from the user's home directory into the cloned repo.
 
-## Sublime FTW
-It's a hassle to symlink the Submlime text stuff, but here ya go... at least for Sierra (10.12.6) and Sublime Text 3 (3126):
-
-```bash
-cd /Users/brownlee/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-rm Default\ \(OSX\).sublime-keymap && ln -s ~/bin/sublimebits/Default\ \(OSX\).sublime-keymap
-rm Markdown.sublime-settings && ln -s ~/bin/sublimebits/Markdown.sublime-settings
-rm Preferences.sublime-settings && ln -s ~/bin/sublimebits/Preferences.sublime-settings
-rm WebExPert.tmTheme && ln -s ~/bin/sublimebits/WebExPert.tmTheme
-rm trailing_spaces.sublime-settings && ln -s ~/bin/sublimebits/trailing_spaces.sublime-settings
-```
+Each subproject of this repo should have a "Setup" section in a `README.md`. I do try to keep this updated so future-me has it easier. Hopefully that has remained true.
