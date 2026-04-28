@@ -4,14 +4,14 @@
 #
 
 # where my stuff is
-AD_CODE_ROOT="/Users/brownlee/Code/adobe"
+AD_CODE_ROOT="$HOME/Code/adobe"
 export AD_CODE_ROOT
 
 # git
 GIT_PATH="/opt/homebrew/bin/git"
 
 # sublime text
-export SUBLIME_ROOT="/Users/brownlee/Library/Application\ Support/Sublime\ Text\ 3/"
+export SUBLIME_ROOT="$HOME/Library/Application Support/Sublime Text 3/"
 export SUBLIME_PACKAGES="$SUBLIME_ROOT/Packages"
 export SUBLIME_PACKAGES_USER="$SUBLIME_PACKAGES/User"
 
