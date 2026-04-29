@@ -5,7 +5,7 @@ Personal Claude Code configuration: global instructions, custom skills (source-t
 ## Layout
 
 - `CLAUDE_GLOBAL.md` — global Claude Code instructions (symlinked to `~/.claude/CLAUDE.md`)
-- `skills/<name>/SKILL.md` — source for skills authored by us; each subfolder is one skill
+- `skills/<name>/SKILL.md` — source for skills tracked here (hand-authored or installed from [skills.sh](https://skills.sh)); each subfolder is one skill
 - `PLUGINS.yml` — registry of external plugins (e.g. `anthropic-skills`) to install on a new machine
 - `commands/install.sh` — symlink every skill in `skills/` into `~/.claude/skills/`
 - `commands/promote.sh` — move a freshly-created `~/.claude/skills/<name>/` into the repo and symlink back
@@ -94,3 +94,21 @@ Provided by the `anthropic-skills` plugin. Human-readable view; the install regi
    ```
 
 Changes take effect immediately — no Claude Code restart needed.
+
+## Adding a Skill from skills.sh
+
+The [skills.sh](https://skills.sh) ecosystem distributes shareable skills via `npx skills`. To install one and track it in this repo:
+
+```bash
+# 1. Install globally as a real directory. --copy bypasses the default
+#    node_modules symlink so the files actually land under ~/.claude/skills/<name>/.
+npx skills add <owner>/<repo> -g --copy
+
+# 2. Promote into the repo (moves the dir, symlinks ~/.claude/skills/<name> back):
+bash ~/Code/tools/binbits/claudebits/commands/promote.sh <name>
+
+# 3. Commit:
+cd ~/Code/tools/binbits && git add claudebits/skills/<name> && git commit
+```
+
+Browse the catalog at <https://skills.sh> or use `npx skills find` interactively. To preview a repo's skills without installing: `npx skills add <owner>/<repo> -l`.
