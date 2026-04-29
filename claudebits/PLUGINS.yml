@@ -1,0 +1,31 @@
+# PLUGINS.yml
+#
+# Registry of external Claude Code plugins / skills installed on this machine.
+# Custom skills (the ones we authored ourselves) live in claudebits/skills/ and
+# are installed via commands/install.sh — they are not listed here.
+#
+# This file is updated manually. When you install or remove a plugin, edit this
+# file so that future-you (on a new machine) has a checklist to replicate the
+# setup.
+#
+# Format:
+#   plugins:
+#     - id: <plugin-id>            required — the plugin's identifier
+#       description: <text>        required — one-line summary
+#       install: <command>         required — exact command to install
+#       skills:                    optional — skill names exposed by the plugin
+#         - <skill-name>
+
+plugins:
+  - id: anthropic-skills
+    description: Anthropic-provided skill bundle (document, scheduling, memory, skill authoring)
+    install: # TODO: confirm exact install command (e.g. `/plugin install anthropic-skills`)
+    skills:
+      - schedule           # /anthropic-skills:schedule
+      - consolidate-memory # /anthropic-skills:consolidate-memory
+      - skill-creator      # /anthropic-skills:skill-creator
+      - pdf                # /anthropic-skills:pdf
+      - pptx               # /anthropic-skills:pptx
+      - docx               # /anthropic-skills:docx
+      - xlsx               # /anthropic-skills:xlsx
+      - setup-cowork       # /anthropic-skills:setup-cowork
