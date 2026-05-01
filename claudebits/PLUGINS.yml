@@ -29,3 +29,21 @@ plugins:
       - docx               # /anthropic-skills:docx
       - xlsx               # /anthropic-skills:xlsx
       - setup-cowork       # /anthropic-skills:setup-cowork
+
+  - id: compound-engineering
+    description: |
+      AI-assisted development methodology by Every.to. Implements the Plan→Work→Review→Compound
+      loop with 26 specialized agents, 23 workflow commands, and 13 skills. The core idea:
+      each unit of engineering work should make subsequent work easier — bug fixes eliminate
+      bug categories, patterns become reusable tools, solutions get codified as institutional
+      knowledge. See: https://every.to/guides/compound-engineering
+    install: |
+      claude /plugin marketplace add https://github.com/EveryInc/every-marketplace
+      claude /plugin install compound-engineering
+    commands:
+      - /workflows:brainstorm  # clarify fuzzy requirements via guided questioning
+      - /workflows:plan        # spawn parallel research agents → structured implementation plan
+      - /workflows:work        # execute plan in isolation (Git worktree), run quality checks
+      - /workflows:review      # 14+ parallel specialized reviewers (security, perf, arch, data…)
+      - /workflows:compound    # capture patterns into CLAUDE.md + searchable docs/solutions/
+      - /lfg                   # end-to-end: plan → work → review → resolve → PR (50+ agents)
