@@ -7,6 +7,8 @@ echo "$fg[green][binbits]$reset_color loading extras.zsh"
 #
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+SSH_AUTH_SOCK='~/.1password'
+
 
 # node complains about ulimit sometimes
 #

@@ -27,6 +27,9 @@ alias gst='git st'
 alias gdiff='g diff'
 alias glog='git log --graph --pretty="format:%C(yellow)%h%Cgreen%d%Creset %s %C(white) %an, %ar%Creset"'
 
+alias ohai-github='ssh -vT git@github.com'
+alias ohai-gitcorp='ssh -vT git@$ADOBE_GITHUB'
+
 
 # -------------------------
 # yarhnnnn

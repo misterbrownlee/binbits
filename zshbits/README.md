@@ -13,4 +13,6 @@ Zsh configuration: aliases, functions, prompt theme, and profile/rc extras.
 
 ## Setup
 
+most things are pulled in via .omz/custom
+
 TODO: document how these are wired up (typically sourced from `~/.zprofile` / `~/.zshrc`, theme symlinked into `~/.oh-my-zsh/custom/themes/`).

@@ -1,5 +1,7 @@
 # zshrc-extra bits
 # for interactive shells
+# 
+# note this isn't sourced or loaded via custom right now
 #
 
 # --------------------------------
