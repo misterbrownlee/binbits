@@ -2,14 +2,11 @@
 
 Symlinked to `~/.claude/CLAUDE.md`. Applies to every project.
 
-## Skills
+## Global Skills
 
-Global skills are installed at `~/.claude/skills/` and are NOT tracked in binbits.
-The catalog of skills to install (and reinstall on new machines) lives at:
-`~/Code/tools/binbits/claudebits/skills/` (custom skills tracked in git)
+Global skills are installed at ~/.agents/skills and can be symlinkmed to `~/.claude/skills/`. Custom skills are tracked in git at:
+`~/Code/tools/binbits/claudebits/skills/`
 
-External plugins to install on a new machine are catalogued in:
-`~/Code/tools/binbits/claudebits/PLUGINS.yml`
 
 ## Preferences
 

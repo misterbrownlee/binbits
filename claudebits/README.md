@@ -1,28 +1,29 @@
 # claudebits
 
-Personal Claude Code configuration: global instructions, custom skills (source-tracked here), and a registry of which external plugins/skills should be installed on a new machine.
+Personal Claude Code configuration: global instructions and a git-tracked home for custom skills.
 
 ## Layout
 
 - `CLAUDE_GLOBAL.md` — global Claude Code instructions (symlinked to `~/.claude/CLAUDE.md`)
-- `skills/<name>/SKILL.md` — source for skills tracked here (hand-authored or installed from [skills.sh](https://skills.sh)); each subfolder is one skill
-- `PLUGINS.yml` — registry of external plugins (e.g. `anthropic-skills`) to install on a new machine
+- `skills/<name>/SKILL.md` — custom skills tracked in git; each subfolder is one skill
 - `commands/install.sh` — symlink every skill in `skills/` into `~/.claude/skills/`
 - `commands/promote.sh` — move a freshly-created `~/.claude/skills/<name>/` into the repo and symlink back
 
 Skills live at `~/.claude/skills/<name>` and are invoked with `/skill-name` in Claude Code. Custom skills in this repo are wired into that path via symlink so the normal Claude tooling keeps working unmodified.
 
-## Setup
+## New Machine Setup
 
 ```bash
-# 1. Symlink CLAUDE_GLOBAL.md into ~/.claude/
+# 1. Wire global instructions
 ln -s ~/Code/tools/binbits/claudebits/CLAUDE_GLOBAL.md ~/.claude/CLAUDE.md
 
-# 2. Symlink each custom skill into ~/.claude/skills/
+# 2. Install custom skills (symlinks into ~/.claude/skills/)
 bash ~/Code/tools/binbits/claudebits/commands/install.sh
 
-# 3. Install plugins listed in PLUGINS.yml using whatever the current install
-#    command is (see PLUGINS.yml for the per-plugin command).
+# 3. Install plugins
+claude /plugin marketplace add https://github.com/EveryInc/every-marketplace
+claude /plugin install compound-engineering
+# anthropic-skills: confirm exact install command and add here
 ```
 
 `install.sh` is idempotent and refuses to clobber an existing real directory at the target. If `~/.claude/skills/<name>/` already exists as a non-symlinked directory, remove it manually after confirming its contents match the repo copy (e.g. `diff -r`), then re-run.
@@ -46,7 +47,7 @@ Bundled with Claude Code itself — nothing to install, listed here for referenc
 
 ## Plugin Skills (`anthropic-skills:*`)
 
-Provided by the `anthropic-skills` plugin. Human-readable view; the install registry is `PLUGINS.yml`.
+Provided by the `anthropic-skills` plugin.
 
 | Skill | Invoke | What it does |
 |---|---|---|
@@ -59,9 +60,22 @@ Provided by the `anthropic-skills` plugin. Human-readable view; the install regi
 | xlsx | `/anthropic-skills:xlsx` | Read, edit, and create Excel/CSV/TSV spreadsheets |
 | setup-cowork | `/anthropic-skills:setup-cowork` | Guided Cowork setup — install plugin, try a skill, connect tools |
 
+## Plugin Skills (`compound-engineering`)
+
+Provided by the `compound-engineering` plugin (Every.to). Implements the Plan→Work→Review→Compound loop. Guide: <https://every.to/guides/compound-engineering>
+
+| Command | What it does |
+|---|---|
+| `/workflows:brainstorm` | Clarify fuzzy requirements via guided questioning |
+| `/workflows:plan` | Spawn parallel research agents → structured implementation plan |
+| `/workflows:work` | Execute plan in isolation (Git worktree), run quality checks |
+| `/workflows:review` | 14+ parallel specialized reviewers (security, perf, arch, data…) |
+| `/workflows:compound` | Capture patterns into CLAUDE.md + searchable docs/solutions/ |
+| `/lfg` | End-to-end: plan → work → review → resolve → PR (50+ agents) |
+
 ## Adding a New Custom Skill
 
-1. Create the skill in the normal way — usually `/anthropic-skills:skill-creator`, which writes to `~/.claude/skills/<name>/`. Or scaffold by hand:
+1. Create the skill — usually `/anthropic-skills:skill-creator`, which writes to `~/.claude/skills/<name>/`. Or scaffold by hand:
 
    ```bash
    mkdir -p ~/.claude/skills/my-skill
