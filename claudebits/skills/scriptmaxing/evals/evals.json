@@ -1,0 +1,77 @@
+{
+  "skill_name": "scriptmaxing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Can you look up which Jira tickets are currently in progress for the platform team and summarize what they're working on?",
+      "expected_output": "Agent self-triggers before using LLM to reason about Jira. Checks top-level rule: repeatedly query the same endpoint → check MCP registry first. Proposes checking for a Jira MCP before proceeding.",
+      "files": [],
+      "assertions": [
+        {"id": "1a", "name": "self-triggers-before-llm", "description": "Agent pauses and applies self-trigger check before attempting to answer from memory or web search"},
+        {"id": "1b", "name": "matches-mcp-pattern", "description": "Recognizes 'repeatedly query Jira/Linear/Confluence' → check MCP registry first from the pattern library"},
+        {"id": "1c", "name": "proposes-mcp-check", "description": "Explicitly proposes checking the MCP registry for a Jira connector before proceeding with LLM"},
+        {"id": "1d", "name": "does-not-answer-with-llm-first", "description": "Does not attempt to answer the Jira question using LLM reasoning before surfacing the MCP option"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Ok now do the same transformation on reports/q2.csv that you just did on reports/q1.csv.",
+      "expected_output": "Agent self-triggers on repeated step. Recognizes it is about to repeat a manual multi-step process. Proposes scripting the transformation before repeating it.",
+      "files": [],
+      "assertions": [
+        {"id": "2a", "name": "self-triggers-on-repeat", "description": "Agent recognizes it is about to repeat a step from earlier in the session and pauses"},
+        {"id": "2b", "name": "applies-top-level-rule", "description": "Applies top-level rule: if a step will repeat during this session, create a reusable tool before doing it a second time"},
+        {"id": "2c", "name": "proposes-script-before-repeating", "description": "Proposes scripting the transformation rather than repeating it manually"},
+        {"id": "2d", "name": "asks-about-conventions", "description": "Asks about scripting conventions or where to save the script"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "fix deterministic work",
+      "expected_output": "Scans session history. Identifies repeated docker compose pattern. Proposes thin script. Asks about conventions. Does not write immediately.",
+      "files": [],
+      "assertions": [
+        {"id": "3a", "name": "detects-repeated-command", "description": "Identifies docker compose down && docker compose up --build as the repeated pattern"},
+        {"id": "3b", "name": "proposes-thin-script", "description": "Proposes a script or alias to wrap the workflow"},
+        {"id": "3c", "name": "does-not-write-immediately", "description": "Does not write final script without user agreement"},
+        {"id": "3d", "name": "also-notices-logs-pattern", "description": "Also notices docker compose logs -f app as a repeated command"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "You are starting a new session on a project. The README describes a manual deploy process: SSH into server, git pull, restart service. There is no Makefile, no scripts/ dir, no CI. Begin by reading the project.",
+      "expected_output": "Self-triggers on new session scan. Makes one non-blocking offer. Does not derail session.",
+      "files": [],
+      "assertions": [
+        {"id": "4a", "name": "self-triggers-on-new-session", "description": "Proactively notices the manual deploy steps as a scriptmax opportunity"},
+        {"id": "4b", "name": "single-non-blocking-offer", "description": "Makes exactly one offer without derailing into full analysis"},
+        {"id": "4c", "name": "phrased-as-question", "description": "Offer is phrased as a question, not an assumption"},
+        {"id": "4d", "name": "hands-control-back", "description": "Returns control to user after the offer"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Can you go through these log files and pull out all the lines where requests failed with a 5xx error, then tell me which endpoints are failing most often?",
+      "expected_output": "Agent self-triggers before reading files with LLM. Recognizes 'search logs' matches pattern library (grep/awk). Proposes deterministic script before proceeding.",
+      "files": [],
+      "assertions": [
+        {"id": "5a", "name": "self-triggers-before-acting", "description": "Agent pauses before reading files and applies self-trigger check"},
+        {"id": "5b", "name": "matches-pattern-library", "description": "Recognizes this as a 'search logs / extract structured data' pattern from the library"},
+        {"id": "5c", "name": "proposes-deterministic-alternative", "description": "Proposes grep/awk/script alternative instead of LLM file reading"},
+        {"id": "5d", "name": "does-not-read-files-first", "description": "Does not read log files with LLM before proposing the deterministic approach"}
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I need you to go through all the JSON files in data/, validate that each one has a 'user_id' and 'timestamp' field, and flag any that are missing either field.",
+      "expected_output": "Agent self-triggers. Recognizes 'validate JSON fields across many files' as a jq/python pattern. Proposes script before reading files one by one.",
+      "files": [],
+      "assertions": [
+        {"id": "6a", "name": "self-triggers-before-reading", "description": "Agent pauses and applies self-trigger check before reading 20 JSON files"},
+        {"id": "6b", "name": "matches-jq-pattern", "description": "Recognizes this matches the 'parse JSON / extract fields' → jq pattern"},
+        {"id": "6c", "name": "proposes-script-not-llm", "description": "Proposes a jq or Python script rather than reading files one by one with LLM"},
+        {"id": "6d", "name": "script-is-complete-and-correct", "description": "If a script is written, it correctly checks for user_id and timestamp fields and reports missing ones"}
+      ]
+    }
+  ]
+}

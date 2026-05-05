@@ -5,7 +5,6 @@
 # general stuff
 #
 alias clock='tty-clock -C 3'
-alias devbotwut='echo "$DEVBOT_PASSWD"'
 alias epoch='date "+%s"'
 alias ff='findfile'
 alias findfile='find . -name'
@@ -24,7 +23,6 @@ alias psrv='wsvr'
 alias reload-bash='rlbash'
 alias rlb='rlbash'
 alias rlbash='. ~/.bash_profile'
-alias sauce='sc -u brownlee -k $SAUCE_ACCESS_KEY'
 alias shrug='echo -e "" && echo -e "  ¯\_(ツ)_/¯ "'
 alias storeBgone='find . -name '*.DS_Store' -type f -delete'
 alias stpkg='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
@@ -77,11 +75,6 @@ alias cdup='cd .. && ll'
 #
 alias dev='nrd'
 alias gcc='xcrun gcc'
-#alias dev='grunt dev --connect-port='
-# alias bdd='grunt default dev --devOnly'
-# alias bddd='grunt default dev-dist'
-# alias bd3='bddd'
-# alias bdebug='node-debug /usr/local/lib/node_modules/grunt-cli/bin/grunt'
 
 
 # -------------------------
@@ -108,6 +101,8 @@ alias vox='open -a Vox'
 # -------------------------
 #
 alias gomon='echo "staring mongo daemon..."; mongod --config /usr/local/etc/mongod.conf'
+
+
 # alias upmongo='launchctl load /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
 # alias downmongo='launchctl unload /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
 
@@ -125,6 +120,7 @@ alias nln='npm link'
 alias nn='echo "removing node_modules..." && rm -rf node_modules'
 alias nr='npm run'
 alias nuke-node-modules='fragFolder node_modules'
+
 # alias nr-b='npm run build'
 # alias nr-d='npm run dev'
 # alias nr-s='npm run serve'
@@ -169,7 +165,7 @@ alias unstage='g unstage'
 
 # markdown-cheat remind me I haz stupid
 # so I can actually use them
-alias markdown-cheat="open -a /Applications/Google\ Chrome.app https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
+alias markdown-cheat="open https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
 
 # -------------------------
 # super random lolz
@@ -180,11 +176,4 @@ alias bitch='sudo' # kristofer joseph <3
 alias makes-me-a-sandwich='echo "make it yourself, $USER..."'
 alias beerme='echo "WOOOOOOOOOOO! 🍺 🍺 🍺 🍺 🍺 🍺 !!!!!!!!!"'
 
-# -------------------------
-# memory lane
-# -------------------------
-#
-# alias safp='/Users/brownlee/projects/tools/fpdebugger/standaloneplayer.app/Contents/MacOS/fp'
-# alias opendb='open -a  /Applications/Utilities/SQLite\ Database\ Browser\ 2.0\ b1.app/'
-# alias logcat='adb logcat'
-# alias mnt='adb shell'
+
