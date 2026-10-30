@@ -1,9 +1,6 @@
 [user]
-  name = brownlee
-  email = brownlee@adobe.com
-
-[credential]
-  helper = osxkeychain
+  name = misterbrownlee
+  email = ixab.001@gmail.com
 
 [color]
   ui = auto

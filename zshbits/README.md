@@ -13,6 +13,17 @@ Zsh configuration: aliases, functions, prompt theme, and profile/rc extras.
 
 ## Setup
 
-most things are pulled in via .omz/custom
+Oh My Zsh automatically sources any `*.zsh` files found in `~/.oh-my-zsh/custom/` and loads custom themes from `~/.oh-my-zsh/custom/themes/`. Wire these up by symlinking the repo files into those directories:
 
-TODO: document how these are wired up (typically sourced from `~/.zprofile` / `~/.zshrc`, theme symlinked into `~/.oh-my-zsh/custom/themes/`).
+```bash
+# Custom config scripts (auto-sourced by Oh My Zsh)
+ln -sf ~/Code/binbits/zshbits/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh
+ln -sf ~/Code/binbits/zshbits/extras.zsh ~/.oh-my-zsh/custom/extras.zsh
+ln -sf ~/Code/binbits/zshbits/functions.zsh ~/.oh-my-zsh/custom/functions.zsh
+ln -sf ~/Code/binbits/zshbits/z_greeting.zsh ~/.oh-my-zsh/custom/z_greeting.zsh
+
+# Prompt theme
+ln -sf ~/Code/binbits/zshbits/meowxmeow.zsh-theme ~/.oh-my-zsh/custom/themes/meowxmeow.zsh-theme
+```
+
+To activate the theme, set `ZSH_THEME="meowxmeow"` in `~/.zshrc`, then reload with `source ~/.zshrc` (or `rlz`).

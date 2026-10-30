@@ -7,7 +7,8 @@ echo "$fg[green][binbits]$reset_color loading extras.zsh"
 #
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-SSH_AUTH_SOCK='~/.1password'
+# 1Password SSH agent (symlinked from ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock)
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 
 # node complains about ulimit sometimes
